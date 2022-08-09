@@ -103,7 +103,7 @@
                     </button>
                 </p>
             </form>
-        </div>
+        </div>        
         </div> <!-- Abre área de contato -->
         <!-- Abre área de contato -->
         <div class="panel-footer" >

@@ -10,10 +10,11 @@ $totalLinhas = $lista->num_rows;
 
 ?>
 <table>
-    <?php do {
+<?php do { ?>
     <tr>
     <td> <?php echo $linha['descri_produto']?></td>
     <td> <?php echo $linha['valor_produto']?></td>
     </tr>
-    ?> <?php } while($linha = $lista->fetch_assoc())?>
+     <?php } while($linha = $lista->fetch_assoc())?>
 </table>
+
