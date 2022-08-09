@@ -48,8 +48,8 @@ $totalLinhas = $listaTipos -> num_rows;
                         <span class="glyphicon glyphicon-home"></span>
                     </a>
                 </li>
-                <li><a href="index.php#destaques">Destaques</a></li>
-                <li><a href="index.php#produtos">Destaques</a></li>
+                <li><a href="index.php#destaques">Destaques</a></li>                
+                <li><a href="index.php#produtos">Produtos</a></li>
                 <!-- Dropdown -->
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -64,13 +64,35 @@ $totalLinhas = $listaTipos -> num_rows;
                             <a href="produtos_por_tipo.php?id_tipo=<?php echo $linhaTipo['id_tipo']?>"><?php echo $linhaTipo['rotulo_tipo']?></a>
                         </li>
                         <?php } while ($linhaTipo=$listaTipos -> fetch_assoc());?>
-                    </ul>
-                </li> 
-                <li></li>
-                <li></li>
+                    </ul> <!-- Fecha lista de tipos -->
+                </li>  <!-- Fecha dropdown -->
+                <li><a href="index.php#contato">Contato</a></li>                
+                <li>
+                    <!-- Formulário de busca -->
+                    <form action="produtos_busca.php" method="get" name="form_busca" id="form_busca" class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Busca produto" name="buscar" id="buscar" size="9" required>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div> <!-- Fecha input-group -->
+                    </form>
+                </li>
+                <li class="active">
+                    <a href="admin/index.php">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;Admin
+                    </a>
+
+                </li>
             </ul>  
         </div> <!-- Fecha nav Direita -->
     </div> <!-- Fecha container-fluid-->
-</nav> <!-- Fecha barra de navegação->
+</nav> <!-- Fecha barra de navegação-->
 </body>
 </html>
+
+<?php mysqli_free_result($listaTipos); ?>
