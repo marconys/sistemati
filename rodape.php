@@ -32,37 +32,37 @@
         <!-- Abre área de navegação -->
         <div class="col-sm-6 col-md-4">
             <div class="panel-footer" style="background:none;">
-            <h4>Links</h4>
-            <ul class="nav nav-pills nav-stacked">
-                <li>
-                    <a href="index.php#home" class="text-danger">
-                    <span class="glyphicon glyphicon-home" arial-hiden="true">&nbsp; Home</span>
-                </a>
-            </li>
+                <h4>Links</h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li>
+                        <a href="index.php#home" class="text-danger">
+                            <span class="glyphicon glyphicon-home" arial-hiden="true">&nbsp; Home</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="index.php#destaques" class="text-danger">
-                <span class="glyphicon glyphicon-ok-sign" arial-hiden="true">&nbsp; Destaque</span>
-                </a>
-            </li>
+                    <li>
+                        <a href="index.php#destaques" class="text-danger">
+                            <span class="glyphicon glyphicon-ok-sign" arial-hiden="true">&nbsp; Destaque</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="index.php#produtos" class="text-danger">
-                <span class="glyphicon glyphicon-cutlery" arial-hiden="true">&nbsp; Produtos</span>
-                </a>
-            </li>
-                <li>
-                    <a href="index.php#contato" class="text-danger">
-                <span class="glyphicon glyphicon-envelope" arial-hiden="true">&nbsp; Contato</span>
-                </a>
-            </li>
-                <li>
-                    <a href="admin/index.php" class="text-danger">
-                <span class="glyphicon glyphicon-user" arial-hiden="true">&nbsp; Administração</span>
-                </a>
-            </li>
-            </ul>
-        </div>
+                    <li>
+                        <a href="index.php#produtos" class="text-danger">
+                            <span class="glyphicon glyphicon-cutlery" arial-hiden="true">&nbsp; Produtos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php#contato" class="text-danger">
+                            <span class="glyphicon glyphicon-envelope" arial-hiden="true">&nbsp; Contato</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin/index.php" class="text-danger">
+                            <span class="glyphicon glyphicon-user" arial-hiden="true">&nbsp; Administração</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="col-sd-6 col-md-4">
@@ -103,15 +103,16 @@
             </div>
         </div> <!-- Abre área de contato -->
         <!-- Abre área de contato -->
-        <div class="panel-footer" >
-            <h6 class="text-danger">
-                Desenvolvido por Marconys Pinheiro; 2022.
-                <br>
-                <a href="https://github.com/marconys">
-                    marconys.com.br
-                </a>
-            </h6>
-        </div>
+        <div class="col-sm-12">
+            <div class="panel-footer">
+                <h6 class="text-danger text-center">
+                    &copy; Copyright Desenvolvido por Marconys Pinheiro - AlunoTI91.
+                    <br>
+                    <a href="https://github.com/marconys">
+                        marconys.com.br
+                    </a>
+                </h6>
+            </div>
         </div>
     </div>
 </body>
