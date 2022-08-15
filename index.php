@@ -22,7 +22,7 @@
 
 <!-- Área de destaque -->
 <?php include('produtos_destaque.php');?>
-<a name="destaque">&nbsp;</a>
+<a name="destaques">&nbsp;</a>
 
 
 <!-- Área produtos em geral -->
