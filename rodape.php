@@ -108,9 +108,7 @@
                 <h6 class="text-danger text-center">
                     &copy; Copyright Desenvolvido por Marconys Pinheiro - AlunoTI91.
                     <br>
-                    <a href="https://github.com/marconys">
-                        marconys.com.br
-                    </a>
+                    <a href="https://github.com/marconys">marconys.github.io/Portifolio</a>
                 </h6>
             </div>
         </div>
