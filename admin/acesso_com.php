@@ -12,7 +12,7 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['login_usuario'])) {
 // Se não existir, destruimos a sessão por segurança
 
-    header("location: logon.php");
+    header("location: login.php");
     exit;
 }
 
