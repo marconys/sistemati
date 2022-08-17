@@ -68,10 +68,10 @@
         <div class="col-sd-6 col-md-4">
             <div class="panel-footer" style="background: none">
                 <h4>Contato</h4>
-                <form action="rodape_contato-envia.php" method="post" name="form-contato" id="form-contato">
+                <form action="rodape_contato-envia.php" method="post" enctype="multipart/form-data" name="form-contato" id="form-contato">
                     <p>
                         <span class="input-group">
-                            <span class="input-group-addon" id="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon1">
                                 <span class="glyphicon glyphicon-user" arial-hiden="true"></span>
                             </span>
                             <input type="text" name="nome_contato" id="nome_contato" placeholder="digite o seu nome" aria-describedby="basic-addon1" required class="form-control">
@@ -87,11 +87,22 @@
                     </p>
                     <p>
                         <span class="input-group">
-                            <span class="input-group-addon" id="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon3">
                                 <span class="glyphicon glyphicon-pencil" arial-hiden="true"></span>
                             </span>
                             <textarea name="comentarios_contato" id="nome_contato" placeholder="digite o seus comentarios" aria-describedby="basic-addon3" required class="form-control" cols="30" rows="5">
                         </textarea>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="input-group">
+                            <span class="input-group-addon" id="basic-addon4">
+                                <span class="glyphicon glyphicon-paperclip" arial-hiden="true"></span>
+                            </span>
+                            <input type="file" name="file_contato" aria-describedby="basic-addon4" class="form-control">
+                            <span class="input-group-addon" id="basic-addon4">
+                            <span class="glyphicon glyphicon-trash" arial-hiden="true"></span>
+                            </span>
                         </span>
                     </p>
                     <p>

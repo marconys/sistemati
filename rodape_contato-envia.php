@@ -12,21 +12,71 @@
 </head>
 
 <body class="fundofixo">
-    <?php include('menu_publico.php'); ?>
+    <?php
+
+    use PHPMailer\PHPMailer\PHPMailer;
+
+    include('menu_publico.php'); ?>
     <main class="container">
         <section>
-            <div class="jumbotron alert-danger">
-                <h class="text-danger">Agradecemos o Contato</h>
-                <?php 
-                $destino = "marconysbatera@gmail.com.br";
-                $nome_contato = $_POST['nome_contato'];
-                $email_contato = $_POST['email_contato'];
-                $comentarios_contato = "Menssagem de : ". $_POST['nome_contato'] . "\n" . $_POST['comentarios_contato'];
+            <div class="jumbotron alert-success text-center">
+                <h1 class="text-alert-success">Agradecemos o Contato</h1>
+                <?php
 
-                // Envia e-mail
-                $mailsend = mail($destino, "Formulário de contato do site", $comentarios_contato, "De: $email_contato");
-                echo "<p class='text-center'>Obrigado por enviar seu comentário, <b>$nome_contato</b></p>";
-                echo "<p class='text-center'><b>Menssagem enviada com sucesso!</b></p>";
+                include('./PHPMailer/PHPMailer.php');
+                include('./PHPMailer/SMTP.php');
+
+
+                $nome_contato = utf8_decode($_POST['nome_contato']);
+                $email_contato = utf8_decode($_POST['email_contato']);
+                $comentarios_contato = utf8_decode($_POST['email_contato']);
+                $file_contato = $_FILES['file_contato'];
+
+
+
+                // Instanciando um objeto apartir da classe PHPMailer e informando o titpo de servidor
+                $email = new PHPMailer();
+                $email->isMail();
+
+
+                //Configuração do servidor de email
+                $email->isSMTP();
+                $email->Host = "smtp.mail.yahoo.com";
+                $email->Port = "587";
+                $email->SMTPSecure = "tls";
+                $email->SMTPAuth = "true";
+                $email->Username = "marconyspinheiro@yahoo.com.br";
+                $email->Password = "rascunhosg";
+
+                //Configuração da msg                
+                $email->setFrom($email->Username, "Churrasqueiro & Churrascow"); // remetente
+                $email->addAddress('marconysbatera@gmail.com'); // destinatário
+                $email->Subject = "Churrascow? Fale Conosco";
+                
+                //Verifica se há anexos
+                if (
+                    isset($_FILES['file_contato']) &&
+                    $_FILES['file_contato']['error'] == UPLOAD_ERR_OK
+                ) {
+                    $email->AddAttachment(
+                        $_FILES['file_contato']['tmp_name'],
+                        $_FILES['file_contato']['name']
+                    );
+                }
+
+
+                $body_email = "Você recebeu uma menssagem de: $nome_contato ($email_contato):
+                <br><br> Menssagem:<br> $comentarios_contato <br> Anexos: <br> ";
+
+                $email->Body = $body_email;
+
+                //Verifica envio do e-mail
+                if ($email->send()) {
+                    echo "<h2>Sua menssagem foi enviada com sucesso!</h2>";
+                } else {
+                    echo "<h2>Falha ao enviar a menssagem</h2>" . $email->ErrorInfo;
+                }
+
 
                 ?>
             </div>

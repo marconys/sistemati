@@ -28,7 +28,8 @@ if ($_POST) {
         $_SESSION['login_usuario'] = $login_usuario;
         $_SESSION['nivel_usuario'] = $linha['nivel_usuario'];
         $_SESSION['nome_da-sessao'] = session_name();
-        echo "<script>window.open('index.php',','_self)</script>";
+        echo "Tô Logado Cara!";
+        //echo "<script>window.open('index.php',','_self)</script>";
 
     }
     else{
