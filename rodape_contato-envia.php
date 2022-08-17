@@ -27,9 +27,9 @@
                 include('./PHPMailer/SMTP.php');
 
 
-                $nome_contato = utf8_decode($_POST['nome_contato']);
-                $email_contato = utf8_decode($_POST['email_contato']);
-                $comentarios_contato = utf8_decode($_POST['email_contato']);
+                $nome_contato = $_POST['nome_contato'];
+                $email_contato = $_POST['email_contato'];
+                $comentarios_contato =$_POST['comentarios_contato'];
                 $file_contato = $_FILES['file_contato'];
 
 
@@ -37,6 +37,8 @@
                 // Instanciando um objeto apartir da classe PHPMailer e informando o titpo de servidor
                 $email = new PHPMailer();
                 $email->isMail();
+                $email->isHTML(true);
+                $email->CharSet = "utf-8";
 
 
                 //Configuração do servidor de email
@@ -45,8 +47,8 @@
                 $email->Port = "587";
                 $email->SMTPSecure = "tls";
                 $email->SMTPAuth = "true";
-                $email->Username = "marconyspinheiro@yahoo.com.br";
-                $email->Password = "rascunhosg";
+                $email->Username = "meuyahoo.com";
+                $email->Password = "senha do app";
 
                 //Configuração da msg                
                 $email->setFrom($email->Username, "Churrasqueiro & Churrascow"); // remetente
@@ -65,8 +67,8 @@
                 }
 
 
-                $body_email = "Você recebeu uma menssagem de: $nome_contato ($email_contato):
-                <br><br> Menssagem:<br> $comentarios_contato <br> Anexos: <br> ";
+                $body_email = "Você recebeu uma menssagem de: '$nome_contato' ('$email_contato'):
+                <br><br> Menssagem: '$comentarios_contato' <br> Anexos: <br> ";
 
                 $email->Body = $body_email;
 

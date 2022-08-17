@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Boi na Brasa</title>
+    <title>Churrasqueiro & Churrascow</title>
 </head>
 
 <body class="fundofixo">

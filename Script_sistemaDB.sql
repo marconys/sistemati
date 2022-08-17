@@ -1,5 +1,5 @@
--- create database sistemaDB;
--- use sistemaDB;
+ -- create database sistemaDB;
+ -- use sistemaDB;
 -- estrutura da tabela de produtos
 create table tbprodutos(
 id_produto int(11) not null,
@@ -36,6 +36,9 @@ INSERT INTO `tbtipos` (`id_tipo`, `sigla_tipo`, `rotulo_tipo`) VALUES
 (1, 'chu', 'Churrasco'),
 (2, 'sob', 'Sobremesa');
 
+INSERT INTO `tbtipos` (`id_tipo`, `sigla_tipo`, `rotulo_tipo`) VALUES
+(3, 'beb', 'Bebidas');
+
 -- estrutura da tabela tbusuários
 
 create table tbusuarios(
@@ -49,7 +52,8 @@ INSERT INTO `tbusuarios` (`id_usuario`, `login_usuario`, `senha_usuario`, `nivel
 (1, 'senac', '1234', 'sup'),
 (2, 'joao', '4568', 'com'),
 (3, 'maria', '7894', 'cli'),
-(4, 'well', '1234', 'sup');
+(4, 'well', '1234', 'sup'),
+(5, 'marconys', '1234', 'sup');
 
 -- índices da tabela tbprodutos
 
@@ -75,7 +79,7 @@ modify id_produto int(11) not null auto_increment, auto_increment=10;
 -- auto incremento da  tbtipos
 
 alter table tbtipos
-modify id_tipo int(11) not null auto_increment, auto_increment=3;
+modify id_tipo int(11) not null auto_increment, auto_increment=4;
 
 -- auto incremento da  tbusuarios
 
@@ -102,4 +106,6 @@ from tbprodutos p
 join tbtipos t 
 where p.id_tipo_produto = t.id_tipo;
 
-commit;
+select * from vw_tbprodutos;
+select * from tbtipos;
+select * from tbusuarios;

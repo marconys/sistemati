@@ -1,39 +1,33 @@
 <?php
 include('../conexoes/conexao.php');
-// Ínicia verificação do login
+// inicia verificação do login
 if ($_POST) {
-    // Definindo o USE do banco de dados
+    // definindo o USE do banco de dados
     mysqli_select_db($conexao, $database_conexao);
-    // Verifica o login e senha recebidos
+
+    // verifica login e senha recebidos
     $login_usuario = $_POST['login_usuario'];
     $senha_usuario = $_POST['senha_usuario'];
 
-    // Verifica o
     $verificaSQL = "select * from tbusuarios where login_usuario = '$login_usuario' and senha_usuario = '$senha_usuario'";
-
-    // Carrega os dados e verificaa linha de retorno, caso exista
-    //$lista_session = $conexao->query($verificaSQL);
+    // carregar os dados e verificar a linha de retorno, caso exista.
+    //$lista_session = $conn->query($verificaSQL);
     $lista_session = mysqli_query($conexao, $verificaSQL);
-    $linha = $lista_session->fetch_assoc();
+    $linha  = $lista_session->fetch_assoc();
     $numeroLinhas = mysqli_num_rows($lista_session);
-
-    // Se a sessão não existir, inicia uma nova sessão
+    // se a sessão não exixtir, iniciamos uma sessão
     if (!isset($_SESSION)) {
         $sessao_antiga = session_name("Churrascow");
         session_start();
-        $session_name_new = session_name(); // recupera o nome atual
+        $sessao_name_new = session_name(); // recupera o nome atual
     }
-
-    if($numeroLinhas != null){
+    if ($linha != null) {
         $_SESSION['login_usuario'] = $login_usuario;
         $_SESSION['nivel_usuario'] = $linha['nivel_usuario'];
-        $_SESSION['nome_da-sessao'] = session_name();
-        echo "Tô Logado Cara!";
-        //echo "<script>window.open('index.php',','_self)</script>";
-
-    }
-    else{
-        echo "<script>window.open('invasor.php',','_self)</script>";
+        $_SESSION['nome_da_sessao'] = session_name();
+        echo "<script>window.open('index.php','_self')</script>";
+    } else {
+        echo "<script>window.open('invasor.php','_self')</script>";
     }
 }
 
