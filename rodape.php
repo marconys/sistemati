@@ -90,7 +90,7 @@
                             <span class="input-group-addon" id="basic-addon3">
                                 <span class="glyphicon glyphicon-pencil" arial-hiden="true"></span>
                             </span>
-                            <textarea name="comentarios_contato" id="nome_contato" placeholder="digite o seus comentarios" aria-describedby="basic-addon3" required class="form-control" cols="30" rows="5">
+                            <textarea type="text" name="comentarios_contato" id="nome_contato" placeholder="digite o seus comentarios" aria-describedby="basic-addon3" required class="form-control" cols="30" rows="5">
                         </textarea>
                         </span>
                     </p>

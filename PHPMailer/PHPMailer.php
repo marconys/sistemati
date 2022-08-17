@@ -893,7 +893,7 @@ class PHPMailer
     {
         if ($this->SMTPDebug <= 0) {
             return;
-        }
+        }        
         //Avoid clash with built-in function names
         if (is_callable($this->Debugoutput) && !in_array($this->Debugoutput, ['error_log', 'html', 'echo'])) {
             call_user_func($this->Debugoutput, $str, $this->SMTPDebug);
