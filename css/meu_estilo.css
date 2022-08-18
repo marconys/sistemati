@@ -7,6 +7,25 @@
     background-size: cover;
 }
 
+.table{
+    border: 5px solid #fff; 
+}
+
+.table th{
+    border: 3px solid #fff;
+    text-align: center;
+}
+
+.table td{
+    border: 3px solid #fff;    
+    text-align: center;
+}
+
+.table td .largButton{
+    border: 3px solid #fff;
+    margin-top: 5px;
+}
+
 .largButton{
-    width: 100px;
+    width: 100px;     
 }
