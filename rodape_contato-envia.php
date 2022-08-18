@@ -43,12 +43,12 @@
 
                 //Configuração do servidor de email
                 $email->isSMTP();
-                $email->Host = "smtp.mail.yahoo.com";
+                $email->Host = "smtp.mailtrap.io";
                 $email->Port = "587";
                 $email->SMTPSecure = "tls";
                 $email->SMTPAuth = "true";
-                $email->Username = "meuyahoo.com";
-                $email->Password = "senha do app";
+                $email->Username = "92650398670fc6";
+                $email->Password = "b2bfd2d68a04e1";
 
                 //Configuração da msg                
                 $email->setFrom($email->Username, "Churrasqueiro & Churrascow"); // remetente

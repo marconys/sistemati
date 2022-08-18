@@ -25,15 +25,15 @@ $totalLinhas = $lista->num_rows;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../css/meu_estilo.css" rel="stylesheet" type="text/css">
-    <title>produtos (<?php echo $totalLinhas; ?>) - Lista </title>
+    <title>Produtos (<?php echo $totalLinhas; ?>) - Lista </title>
 </head>
 
-<body>
+<body class="fundofixo">
     <?php include('menu_adm.php'); ?>
 
     <main class="container">
-        <h1 class="breadcrump alert-danger">Lista de produtos</h1>
-        <table class="table table-condensed table-hover tbopacidade">
+        <h1 class="breadcrump alert-danger glyphicon glyphicon-shopping-cart">Lista de produtos</h1>
+        <table class="table table-condensed table-hover tbopacidade" style="background-color: #e4b9b9;">
             <!--thead>th*8-->
             <thead>
                 <th class="hidden">ID</th>
