@@ -5,7 +5,7 @@ include('acesso_com.php');
 //Incluindo o Arquivo de conexão
 include('../conexoes/conexao.php');
 
-//Selecionando os dados
+//Selecionando os dados e ordenando por ordem alfabetica
 $consulta = "select * from tbusuarios order by login_usuario asc";
 
 //Buscar a lista completa de usuarios
