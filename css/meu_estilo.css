@@ -7,25 +7,32 @@
     background-size: cover;
 }
 
+
+/*Ínicio da estilização das tabelas listar produtos, tipos e usuário */
 .table{
-    border: 5px solid #fff; 
+    border: 5px solid #fff;
+    
 }
 
 .table th{
     border: 3px solid #fff;
     text-align: center;
+    color: darkred;
 }
 
 .table td{
     border: 3px solid #fff;    
+    align-items: center;
     text-align: center;
+    font-weight:bold;
 }
 
 .table td .largButton{
-    border: 3px solid #fff;
+    border: 2px solid #000;
     margin-top: 5px;
 }
 
 .largButton{
     width: 100px;     
 }
+/*Final da estilização das tabelas listar produtos, tipos e usuário */
