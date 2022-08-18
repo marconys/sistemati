@@ -6,3 +6,7 @@
     -webkit-background-size: cover ;
     background-size: cover;
 }
+
+.largButton{
+    width: 100px;
+}

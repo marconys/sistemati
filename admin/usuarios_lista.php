@@ -40,8 +40,8 @@ $totalLinhas = $lista->num_rows;
                 <th>ID</th>
                 <th>Login</th>
                 <th>Nível</th>                
-                <th>
-                    <a href="usuarios_insere.php" class="btn btn-block btn-primary btn-xs">
+                <th class="largButton">
+                    <a href="usuarios_insere.php" class="btn btn-primary btn-xs largButton">
                         <span class="hidden-xs">Adicionar<br></span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
@@ -72,11 +72,11 @@ $totalLinhas = $lista->num_rows;
                             <?php echo $linha['nivel_usuario']; ?>
                         </td>                                                                      
                         <td>
-                            <a href="usuario_atualiza.php?id_usuario=<?php echo $linha['id_usuario']; ?>" class="btn btn-warning btn-block btn-xs">
+                            <a href="usuario_atualiza.php?id_usuario=<?php echo $linha['id_usuario']; ?>" class="btn btn-warning largButton btn-xs">
                                 <span class="hidden-xs">Alterar</span>
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             </a>
-                            <button class="btn btn-danger btn-block btn-xs delete" 
+                            <button class="btn btn-danger largButton btn-xs delete" 
                             role="button" 
                             data-nome="<?php echo $linha['login_usuario'];?>" 
                             data-id="<?php echo $linha['id_usuario'];?>">
