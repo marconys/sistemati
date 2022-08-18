@@ -41,7 +41,7 @@ $totalLinhas = $lista->num_rows;
                 <th>Sigla</th>
                 <th>Rotulo</th>                
                 <th class="largButton">
-                    <a href="tipos_insere.php" class="btn btn-primary btn-xs largButton">
+                    <a href="tipos_insere.php" class="btn largButton btn-primary btn-xs">
                         <span class="hidden-xs">Adicionar<br></span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>

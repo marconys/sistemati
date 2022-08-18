@@ -41,7 +41,7 @@ $totalLinhas = $lista->num_rows;
                 <th>Login</th>
                 <th>Nível</th>                
                 <th class="largButton">
-                    <a href="usuarios_insere.php" class="btn btn-primary btn-xs largButton">
+                    <a href="usuarios_insere.php" class="btn largButton btn-primary btn-xs">
                         <span class="hidden-xs">Adicionar<br></span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>

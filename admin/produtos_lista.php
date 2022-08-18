@@ -42,8 +42,8 @@ $totalLinhas = $lista->num_rows;
                 <th>Resumo</th>
                 <th>Valor</th>
                 <th>Imagem</th>
-                <th>
-                    <a href="produtos_insere.php" class="btn btn-block btn-primary btn-xs">
+                <th class="largButton">
+                    <a href="produtos_insere.php" class="btn largButton btn-primary btn-xs">
                         <span class="hidden-xs">Adicionar<br></span>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
@@ -77,11 +77,11 @@ $totalLinhas = $lista->num_rows;
                             <img src="../images/<?php echo $linha['imagem_produto']; ?>" alt="" width="100px">
                         </td>
                         <td>
-                            <a href="produto_atualiza.php?id_produto=<?php echo $linha['id_produto']; ?>" class="btn btn-warning btn-block btn-xs">
+                            <a href="produto_atualiza.php?id_produto=<?php echo $linha['id_produto']; ?>" class="btn btn-warning largButton btn-xs">
                                 <span class="hidden-xs">Alterar</span>
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             </a>
-                            <button class="btn btn-danger btn-block btn-xs delete" 
+                            <button class="btn btn-danger largButton btn-xs delete" 
                             role="button" 
                             data-nome="<?php echo $linha['descri_produto'];?>" 
                             data-id="<?php echo $linha['id_produto'];?>">
