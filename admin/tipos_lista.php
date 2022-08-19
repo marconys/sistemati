@@ -8,14 +8,15 @@ include('../conexoes/conexao.php');
 //Selecionando os dados e ordenando por ordem alfabetica
 $consulta = "select * from tbtipos order by sigla_tipo asc";
 
-//Buscar a lista completa de usuarios
+//Buscar a lista completa de tipos
 $lista = $conexao->query($consulta);
 
-//Separar usuarios por linha
+//Separar tipos por linha
 $linha = $lista->fetch_assoc();
 
 //Contar numero de linhas da lista
 $totalLinhas = $lista->num_rows;
+
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +62,8 @@ $totalLinhas = $lista->num_rows;
                         </td>
                         <td>
                             <?php
-                            if ($linha['rotulo_tipo'] == null) {
-                                echo ("<span class='glyphicon glyphicon-remove text-danger aria-hidden='true'></span>");
+                            if ($linha['quantidade_tipo'] == 0) {
+                                echo ("<span class='glyphicon glyphicon-remove text-warning aria-hidden='true'></span>");
                             } else{
                                 echo ("<span class='glyphicon glyphicon-ok text-info aria-hidden='true'></span>");
                             } 

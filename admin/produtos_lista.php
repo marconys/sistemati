@@ -65,6 +65,8 @@ $totalLinhas = $lista->num_rows;
                             <?php
                             if ($linha['destaque_produto'] == 'Sim') {
                                 echo ("<span class='glyphicon glyphicon-heart text-danger aria-hidden='true'></span>");
+                            } else if($linha['disponivel_produto'] == 'Não') {
+                                echo ("<span class='glyphicon glyphicon-remove text-warning aria-hidden='true'></span>");
                             } else {
                                 echo ("<span class='glyphicon glyphicon-ok text-info aria-hidden='true'></span>");
                             }
