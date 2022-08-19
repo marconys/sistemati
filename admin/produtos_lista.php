@@ -1,4 +1,7 @@
 <?php
+//Incluindo variaveis do sistema
+include ('../config.php');
+
 //Incluindo o sistema de autenticação
 include('acesso_com.php');
 
@@ -25,7 +28,7 @@ $totalLinhas = $lista->num_rows;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../css/meu_estilo.css" rel="stylesheet" type="text/css">
-    <title>Produtos (<?php echo $totalLinhas; ?>) - Lista </title>
+    <title><?php echo SYS_NAME ." - Lista (".$totalLinhas.")"; ?> - Produtos </title>
 </head>
 
 <body class="fundofixo">

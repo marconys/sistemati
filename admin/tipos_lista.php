@@ -1,4 +1,7 @@
 <?php
+//Incluindo variaveis do sistema
+include ('../config.php');
+
 //Incluindo o sistema de autenticação
 include('acesso_com.php');
 
@@ -27,7 +30,7 @@ $totalLinhas = $lista->num_rows;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../css/meu_estilo.css" rel="stylesheet" type="text/css">
-    <title>Tipos(<?php echo $totalLinhas; ?>) - Lista </title>
+    <title><?php echo SYS_NAME ." - Lista (".$totalLinhas.")"; ?> - Tipos </title>
 </head>
 
 <body class="fundofixo">
@@ -71,7 +74,7 @@ $totalLinhas = $lista->num_rows;
                             <?php echo $linha['rotulo_tipo']; ?>
                         </td>                                                                      
                         <td>
-                            <a href="usuario_atualiza.php?id_usuario=<?php echo $linha['id_tipo']; ?>" class="btn btn-warning largButton btn-xs">
+                            <a href="usuario_atualiza.php?id_tipo=<?php echo $linha['id_tipo']; ?>" class="btn btn-warning largButton btn-xs">
                                 <span class="hidden-xs">Alterar</span>
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             </a>
