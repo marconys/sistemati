@@ -3,7 +3,7 @@ include('conexoes/conexao.php');
 
 $busca_user = $_GET['buscar'];
 
-$consulta = "select * from vw_tbprodutos where descri_produto like '%" . $busca_user . "%' order by descri_produto asc";
+$consulta = "select * from vw_tbprodutos where descri_produto like '%" . $busca_user . "%' and disponivel_produto = 'Sim' order by descri_produto asc";
 $lista = $conexao->query($consulta);
 $linha = $lista->fetch_assoc();
 $totalLinhas = $lista->num_rows;
@@ -65,7 +65,7 @@ $totalLinhas = $lista->num_rows;
             <div class="row">
                 <!-- Manter os elementos na linha -->
                 <!-- Abre uma estrutura de repetição -->
-                <?php do { ?>
+                <?php do {?>
                     <!-- Abre thumnail/card -->
 
                     <div class="col-sm-6 col-md-4">

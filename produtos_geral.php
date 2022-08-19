@@ -2,7 +2,7 @@
 include('conexoes/conexao.php');
 
 
-$consulta = "select * from vw_tbprodutos order by descri_produto";
+$consulta = "select * from vw_tbprodutos where disponivel_produto = 'Sim' order by descri_produto";
 $lista = $conexao->query($consulta);
 $linha = $lista->fetch_assoc();
 $totalLinhas = ($lista)->num_rows;
@@ -34,7 +34,7 @@ $totalLinhas = ($lista)->num_rows;
         <div class="row">
             <!--Linha de produto-->
             <!--inicio estrutura de repetição-->
-            <?php do { ?>
+            <?php do {?>
                 <!--Abre o Thumbnail/card-->
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
