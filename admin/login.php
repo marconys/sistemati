@@ -10,6 +10,7 @@ if ($_POST) {
     $senha_usuario = $_POST['senha_usuario'];
 
     $verificaSQL = "select * from tbusuarios where login_usuario = '$login_usuario' and senha_usuario = '$senha_usuario'";
+    
     // carregar os dados e verificar a linha de retorno, caso exista.
     //$lista_session = $conn->query($verificaSQL);
     $lista_session = mysqli_query($conexao, $verificaSQL);
@@ -74,7 +75,11 @@ if ($_POST) {
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
                                         </span>
-                                        <input type="password" name="senha_usuario" id="senha_usuario" class="form-control" required autocomplete="off" placeholder="Digite sua senha.">
+                                        <input type="password" name="senha_usuario" id="senha_usuario" class="form-control" required autocomplete="off" placeholder="Digite sua senha."><br>
+                                        <div class="input-group-addon alert-success">
+                                            <div><a href="cadastre-se.php"><span class="text-success">Cadastre-se</span></a></div>
+                                            <div><a href="reset_senha.php"><span class="text-warning">Esqueceu sua senha?</span></a></div>
+                                        </div>
                                     </p>
                                     <p class="text-right">
                                         <input type="submit" value="Entrar" class="btn btn-primary">

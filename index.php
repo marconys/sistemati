@@ -31,6 +31,10 @@
 <?php include('produtos_geral.php');?>
 <a name="produtos">&nbsp;</a>
 
+<!-- Área de reservas -->
+<?php include('reserva_geral.php');?>
+<a name="reservas">&nbsp;</a>
+
 <hr>
 
 <!-- Área do rodapé -->
@@ -53,6 +57,3 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script
 </body>
 </html>
 
-<?php
-echo "Testando, testando, 1,2,3, testando...."
-?>

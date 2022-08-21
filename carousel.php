@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Churrasqueiro e Churrascow</title>
 </head>
+
 <body>
     <div id="banners" class="carousel slide" data-ride="carousel">
         <!--indicador do item-->
@@ -30,4 +31,5 @@
         </a>
     </div>
 </body>
+
 </html>

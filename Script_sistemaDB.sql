@@ -56,6 +56,29 @@ INSERT INTO `tbusuarios` (`id_usuario`, `login_usuario`, `senha_usuario`, `nivel
 (4, 'well', '1234', 'sup'),
 (5, 'marconys', '1234', 'sup');
 
+-- estrutura da tabela tbcliente
+
+create table tbcliente(
+id_cliente int(11) primary key auto_increment not null,
+nome_cliente varchar(60) not null,
+telefone_cliente bigint(14) not null,
+email_cliente varchar(32) not null unique,
+senha_cliente varchar(8) not null
+)engine=InnoDB default charset=utf8;
+
+
+-- Estrutura da tabela tbreserva
+
+create table tbreserva(
+id_reserva int(11) primary key auto_increment not null,
+id_cliente_reserva int(11) not null,
+hora_reserva datetime,
+numero_mesa int (11) not null,
+obs_reserva varchar(100) null,
+valor_reserva decimal(10,2) not null
+
+)engine=InnoDB default charset=utf8;
+
 -- índices da tabela tbprodutos
 
 alter table tbprodutos
@@ -83,15 +106,18 @@ alter table tbtipos
 modify id_tipo int(11) not null auto_increment, auto_increment=4;
 
 -- auto incremento da  tbusuarios
-
-alter table tbusuarios
+alter table tbusuarios 
 modify id_usuario int(11) not null auto_increment, auto_increment=5;
 
 -- restrição (constraint) da tabela produtos
-
-alter table tbprodutos
+alter table tbprodutos 
 add constraint id_tipo_produto_fk foreign key (id_tipo_produto)
 references tbtipos (id_tipo) on delete no action  on update no action;
+
+-- restrição (constraint) da tabela tbreserva
+alter table tbreserva
+add constraint id_cliente_reserva_fk foreign key (id_cliente_reserva)
+references tbcliente (id_cliente) on delete no action  on update no action;
 
 create view vw_tbprodutos as 
 select p.id_produto,

@@ -58,7 +58,7 @@
                     </li>
                     <li>
                         <a href="admin/index.php" class="text-danger">
-                            <span class="glyphicon glyphicon-user" arial-hiden="true">&nbsp; Administração</span>
+                            <span class="glyphicon glyphicon-glass" arial-hiden="true">&nbsp; Reserva</span>
                         </a>
                     </li>
                 </ul>

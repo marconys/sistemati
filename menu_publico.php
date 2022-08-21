@@ -50,6 +50,7 @@ $totalLinhas = $listaTipos -> num_rows;
                 </li>
                 <li><a href="index.php#destaques">Destaques</a></li>                
                 <li><a href="index.php#produtos">Produtos</a></li>
+                <li><a href="index.php#reservas">Reserva</a></li>
                 <!-- Dropdown -->
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -84,7 +85,7 @@ $totalLinhas = $listaTipos -> num_rows;
                 </li>
                 <li class="active">
                     <a href="admin/index.php">
-                    <span class="glyphicon glyphicon-user"></span>&nbsp;Admin
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;Login
                     </a>
 
                 </li>
