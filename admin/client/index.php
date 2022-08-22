@@ -1,7 +1,7 @@
 <?php 
 // Incluindo o sistema de autenticação
 include('../acesso_com.php');
-include('/wamp64/www/sistemati/config.php');
+include('../../config.php');
 ?>
 
 <!DOCTYPE html>
