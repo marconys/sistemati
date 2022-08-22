@@ -57,7 +57,7 @@ if ($_POST) {
             $_SESSION['login_usuario'] = $login_cliente;
             $_SESSION['nivel_usuario'] = $linha['nivel_usuario'];
             $_SESSION['nome_da_sessao'] = session_name();
-            echo "<script>window.open('client/index.php','_self')</script>";
+            echo "<script>window.open('../client/index.php','_self')</script>";
         }else {
             echo "<script>window.open('invasor.php','_self')</script>";
         }
@@ -110,7 +110,7 @@ if ($_POST) {
                                         </span>
                                         <input type="password" name="senha_usuario" id="senha_usuario" class="form-control" required autocomplete="off" placeholder="Digite sua senha."><br>
                                     <div class="input-group-addon alert-success">
-                                        <div><a href="client/cadastre-se.php"><span class="text-success">Cadastre-se</span></a></div>
+                                        <div><a href="../client/cadastre-se.php"><span class="text-success">Cadastre-se</span></a></div>
                                         <div><a href="client/reset_senha.php"><span class="text-warning">Esqueceu sua senha?</span></a></div>
                                     </div>
                                     </p>

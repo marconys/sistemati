@@ -2,13 +2,13 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
-<title>Área do Cliente</title>
+<title><<?php echo SYS_NAME; ?> - Área do Cliente</title>
 <meta charset="utf-8">
 <!-- Link arquivos Bootstrap css -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="../../css/meu_estilo.css" rel="stylesheet" type="text/css">
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../css/meu_estilo.css" rel="stylesheet" type="text/css">
 </head>
 <body class="fundofixo">
 <main class="container">
@@ -30,9 +30,9 @@
                 </div>
             </div>
             <!-- Fecha botão principal -->
-            <!-- Botões Minhas reservas e Nova Reserva -->
+            <!-- Botão Minhas reservas-->
             <div class="btn btn-group btn-group-justified" role="group">
-               <!-- botão Listar -->
+               <!-- Botão Minhas reservas -->
                 <div class="btn-group">
                    <a href="minha_reserva.php">
                        <button class="btn btn-danger">
@@ -40,16 +40,7 @@
                         </button>
                    </a>
                 </div><!-- Fecha botão Minhas reservas -->
-                <!-- botão Nova -->
-                <div class="btn-group">
-                   <a href="nova_reserva.php">
-                       <button class="btn btn-danger">
-                            Nova Reserva
-                        </button>
-                   </a>
-                </div><!-- Fecha botão Nova Reserva -->
-            </div>
-            <!-- Botões Minhas reservas e Nova Reserva -->
+            </div> <!-- Fecha botão principal Minhas reservas -->
         </div><!-- fecha alert-danger -->        
     </div><!-- fecha thumbnail -->
 </div><!-- fecha o dimensionamento -->
@@ -70,26 +61,17 @@
                 </div>
             </div>
             <!-- Fecha botão principal -->
-            <!-- Botões Ver e alterar -->
+            <!-- Botão principal Meus Dados -->
             <div class="btn btn-group btn-group-justified" role="group">
-               <!-- botão Listar -->
+               <!-- Botão Meus Dados -->
                 <div class="btn-group">
                    <a href="mostrar_dados.php">
                        <button class="btn btn-warning">
-                            Ver
+                            Meus Dados
                         </button>
                    </a>
-                </div><!-- Fecha botão ver -->
-                <!-- botão alterar -->
-                <div class="btn-group">
-                   <a href="alterar_dados.php">
-                       <button class="btn btn-warning">
-                            Alterar
-                        </button>
-                   </a>
-                </div><!-- Fecha botão alterar -->
-            </div>
-            <!-- Botões Ver e alterar-->
+                </div><!-- Fecha botão Meus Dados -->
+            </div> <!-- Fecha botão principal Meus Dados -->
         </div><!-- fecha alert-danger -->        
     </div><!-- fecha thumbnail -->
 </div><!-- fecha o dimensionamento -->
@@ -98,7 +80,7 @@
 <!-- CLIENTE PEDIDOS --> 
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail alert-info">
-        <img src="../images/icone_user.png" alt="">
+        <img src="" alt="">
         <br>
         <div class="alert-info">
             <!-- Botão principal -->                    
@@ -114,7 +96,7 @@
             <div class="btn btn-group btn-group-justified" role="group">
                <!-- botão Meus Pedidos -->
                 <div class="btn-group">
-                   <a href="usuarios_lista.php">
+                   <a href="pedidos_cliente.php">
                        <button class="btn btn-info">
                             Meus Pedidos
                         </button>

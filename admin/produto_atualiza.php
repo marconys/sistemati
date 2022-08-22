@@ -70,17 +70,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            <<?php echo SYS_NAME; ?> - Admin (Alterar)</title>
+        <title><<?php echo SYS_NAME; ?> - Admin (Alterar)</title>
                 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
                 <link href="../css/meu_estilo.css" rel="stylesheet" type="text/css">
     </head>
 
-    <body class="">
+    <body class="fundofixo">
         <?php include('menu_adm.php'); ?>
         <main class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+                <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-2 col-md-8">
                     <h2 class="breadcrumb tex-danger">
                         <a href="produtos_lista.php">
                             <button class="btn btn-danger">

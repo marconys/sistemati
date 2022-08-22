@@ -1,7 +1,7 @@
 <?php 
 // Incluindo o sistema de autenticação
-include('../acesso_com.php');
-include('../../config.php');
+include('../admin/acesso_com.php');
+include('../config.php');
 ?>
 
 <!DOCTYPE html>
