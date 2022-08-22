@@ -8,9 +8,12 @@ if ($_POST) {
     // verifica login e senha recebidos
     $login_usuario = $_POST['login_usuario'];
     $senha_usuario = $_POST['senha_usuario'];
+    $login_cliente = $_POST['login_usuario'];
+    $senha_cliente = $_POST['senha_usuario'];
 
     $verificaSQL = "select * from tbusuarios where login_usuario = '$login_usuario' and senha_usuario = '$senha_usuario'";
-    
+    //$verificaSQL = "select * from tbcliente where email_cliente = '$login_cliente' and senha_cliente = '$senha_cliente'";
+
     // carregar os dados e verificar a linha de retorno, caso exista.
     //$lista_session = $conn->query($verificaSQL);
     $lista_session = mysqli_query($conexao, $verificaSQL);
@@ -27,7 +30,7 @@ if ($_POST) {
         $_SESSION['nivel_usuario'] = $linha['nivel_usuario'];
         $_SESSION['nome_da_sessao'] = session_name();
         echo "<script>window.open('index.php','_self')</script>";
-    } else {
+    }else {
         echo "<script>window.open('invasor.php','_self')</script>";
     }
 }
@@ -76,10 +79,10 @@ if ($_POST) {
                                             <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
                                         </span>
                                         <input type="password" name="senha_usuario" id="senha_usuario" class="form-control" required autocomplete="off" placeholder="Digite sua senha."><br>
-                                        <div class="input-group-addon alert-success">
-                                            <div><a href="cadastre-se.php"><span class="text-success">Cadastre-se</span></a></div>
-                                            <div><a href="reset_senha.php"><span class="text-warning">Esqueceu sua senha?</span></a></div>
-                                        </div>
+                                    <div class="input-group-addon alert-success">
+                                        <div><a href="client/cadastre-se.php"><span class="text-success">Cadastre-se</span></a></div>
+                                        <div><a href="client/reset_senha.php"><span class="text-warning">Esqueceu sua senha?</span></a></div>
+                                    </div>
                                     </p>
                                     <p class="text-right">
                                         <input type="submit" value="Entrar" class="btn btn-primary">

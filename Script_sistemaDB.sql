@@ -1,4 +1,4 @@
- -- create database sistemaDB;
+-- create database sistemaDB;
  -- use sistemaDB;
 -- estrutura da tabela de produtos
 create table tbprodutos(
@@ -65,6 +65,9 @@ telefone_cliente bigint(14) not null,
 email_cliente varchar(32) not null unique,
 senha_cliente varchar(8) not null
 )engine=InnoDB default charset=utf8;
+
+insert into `tbcliente` (`id_cliente`, `nome_cliente`, `telefone_cliente`, `email_cliente`, `senha_cliente`)
+values (01,'cliente', 11959816510, 'cliente@cliente.com', '1234');
 
 
 -- Estrutura da tabela tbreserva
@@ -139,3 +142,4 @@ select * from vw_tbprodutos;
 select * from tbtipos;
 select * from tbusuarios;
 select * from tbprodutos;
+select * from tbcliente;
