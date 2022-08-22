@@ -8,8 +8,7 @@ if ($_POST) {
     // verifica login e senha recebidos
     $login_usuario = $_POST['login_usuario'];
     $senha_usuario = $_POST['senha_usuario'];
-    $login_cliente = $_POST['login_usuario'];
-    $senha_cliente = $_POST['senha_usuario'];
+    
 
     $verificaSQL = "select * from tbusuarios where login_usuario = '$login_usuario' and senha_usuario = '$senha_usuario'";
     //$verificaSQL = "select * from tbcliente where email_cliente = '$login_cliente' and senha_cliente = '$senha_cliente'";
@@ -30,9 +29,40 @@ if ($_POST) {
         $_SESSION['nivel_usuario'] = $linha['nivel_usuario'];
         $_SESSION['nome_da_sessao'] = session_name();
         echo "<script>window.open('index.php','_self')</script>";
-    }else {
-        echo "<script>window.open('invasor.php','_self')</script>";
+
+        // verifica e Definindo o use do cliente no banco de dados
+    }else if($_POST){
+        //Definindo o use do cliente no banco de dados
+        mysqli_select_db($conexao, $database_conexao);
+    
+        //Verifica login e senha recebidos do cliente
+    
+        $login_cliente = $_POST['login_usuario'];
+        $senha_cliente = $_POST['senha_usuario'];
+    
+        $verificaSQL = "select * from tbcliente where email_cliente = '$login_cliente' and senha_cliente = '$senha_cliente'";
+    
+        // carregar os dados e verificar a linha de retorno, caso exista.
+        $lista_session = mysqli_query($conexao, $verificaSQL);
+        $linha = $lista_session->fetch_assoc();
+        $numeroLinhas =mysqli_num_rows($lista_session);
+    
+        // se a sessão não exixtir, iniciamos uma sessão
+        if (!isset($_SESSION)) {
+            $sessao_antiga = session_name("Churrascow");
+            session_start();
+            $sessao_name_new = session_name(); // recupera o nome atual
+        }
+        if ($linha != null) {
+            $_SESSION['login_usuario'] = $login_cliente;
+            $_SESSION['nivel_usuario'] = $linha['nivel_usuario'];
+            $_SESSION['nome_da_sessao'] = session_name();
+            echo "<script>window.open('client/index.php','_self')</script>";
+        }else {
+            echo "<script>window.open('invasor.php','_self')</script>";
+        }
     }
+        
 }
 
 ?>

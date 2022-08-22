@@ -104,32 +104,32 @@
 
                                     <select name="id_tipo_produto" id="id_tipo_produto" class="form-control" required>
                                         <?php do { ?>
-                                            <option value="<?php echo $linha_fk['id_tipo'] ?>" <?php
+                                            <option value="<?php echo $linha_fk['id_tipo']; ?>" <?php
                                                                                                 if (!(strcmp($linha_fk['id_tipo'], $linha['id_tipo_produto']))) {
                                                                                                     echo "selected=\"selected\"";
-                                                                                                }
-                                                                                                ?>>
+                                                                                                } ?>>
+
                                                 <?php echo $linha_fk['rotulo_tipo']; ?>
                                             </option>
                                         <?php } while ($linha_fk = $lista_fk->fetch_assoc());
-                                            $linhas_fk = mysqli_num_rows($lista_fk);
-                                            if($linhas_fk>0){
-                                                mysqli_data_seek($lista_fk,0);
-                                                $linhas_fk = $lista_fk->fetch_assoc();
-                                            }
+                                        $linhas_fk = mysqli_num_rows($lista_fk);
+                                        if ($linhas_fk > 0) {
+                                            mysqli_data_seek($lista_fk, 0);
+                                            $linhas_fk = $lista_fk->fetch_assoc();
+                                        }
                                         ?>
                                     </select>
-
                                 </div>
+                                <br>
                                 <!-- radio destaque_produto -->
                                 <label for="destaque_produto">Destaque?</label>
                                 <div class="input-group">
                                     <label for="destaque_produto_s" class="radio-inline">
-                                        <input type="radio" name="destaque_produto" id="destaque_produto" value="Sim" <?php echo $linha['destaque_produto'] == "Sim" ? "checked" : null ?>>
+                                        <input type="radio" name="destaque_produto" id="destaque_produto" value="Sim" <?php echo $linha['destaque_produto'] == "Sim" ? "checked" : null; ?>>
                                         Sim
                                     </label>
                                     <label for="destaque_produto_n" class="radio-inline">
-                                        <input type="radio" name="destaque_produto" id="destaque_produto" value="Não" <?php echo $linha['destaque_produto'] == "Não" ? "checked" : null ?>>
+                                        <input type="radio" name="destaque_produto" id="destaque_produto" value="Não" <?php echo $linha['destaque_produto'] == "Não" ? "checked" : null; ?>>
                                         Não
                                     </label>
                                 </div>
@@ -152,6 +152,17 @@
                                     <textarea name="resumo_produto" id="resumo_produto" cols="30" rows="8" placeholder="Digite os detalhes do produto..." class="form-control"><?php echo $linha['resumo_produto']; ?>
                                 </textarea>
                                 </div>
+                                <br>
+                                <!-- radio disponivel_produto -->
+                                <label for="disponivel_produto">Disponivel?</label>
+                                <label for="disponivel_produto_s" class="radio-inline">
+                                    <input type="radio" name="disponivel_produto" id="disponivel_produto" value="Sim" <?php echo $linha['disponivel_produto'] == "Sim" ? "checked" : null ?>>
+                                    Sim
+                                </label>
+                                <label for="disponivel_produto_n" class="radio-inline">
+                                    <input type="radio" name="disponivel_produto" id="disponivel_produto" value="Não" <?php echo $linha['disponivel_produto'] == "Não" ? "checked" : null; ?>>
+                                    Não
+                                </label>
                                 <br>
                                 <!-- number valor_produto -->
                                 <label for="valor_produto">Valor: R$</label>
@@ -188,9 +199,9 @@
         </main>
         <!-- Script para a imagem -->
         <script>
-            document.getElementById("imagem_produto").onchange = function(){
+            document.getElementById("imagem_produto").onchange = function() {
                 var reader = new FileReader();
-                if(this.files[0].size>528385){
+                if (this.files[0].size > 528385) {
                     alert("A imagem deve ter no máximo 500KB");
                     $("#imagem").attr("src", "blank");
                     $("#imagem").hide();
@@ -200,15 +211,15 @@
 
                 }
                 // Verifica se o input do titpo file possui dado
-                if(this.files[0].type.indexOf("image")==-1){
-                    alert("Formato inválido, escolha uma imagem!")
+                if (this.files[0].type.indexOf("image") == -1) {
+                    alert("Formato inválido, escolha uma imagem!");
                     $("#imagem").attr("src", "blank");
                     $("#imagem").hide();
                     $("#imagem_produto").wrap('<form>').closest('form').get(0).reset();
                     $("#imagem_produto").unwrap();
                     return false;
                 };
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     //Obter dados  carregados e renderizar a miniatura
                     document.getElementById("imagem").src = e.target.result;
                     $("#imagem").show();
@@ -221,8 +232,8 @@
     </body>
 
     </html>
-    <?php 
+    <?php
     mysqli_free_result($lista);
     mysqli_free_result($lista_fk);
-    
+
     ?>
