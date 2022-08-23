@@ -44,7 +44,8 @@ include('../conexoes/conexao.php');
     </nav> <!-- Fecha barra de navegação-->
     <main class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-2 col-md-8">
+            <!-- Abre dimensionamento -->
+            <div class="col-xs-12 col-sm-offset-3 col-sm-3 col-md-offset- col-md-6">
                 <h2 class="breadcrumb tex-danger">
                     <a href="../index.php">
                         <button class="btn btn-danger">
@@ -53,11 +54,68 @@ include('../conexoes/conexao.php');
                     </a>
                     Cadastre-se
                 </h2>
+
+
+                <!-- Abre thumbnail -->
+                <div class="thumbnail">
+                    <div class="alert alert-success" role="alert">
+                        <!-- Abre formulário -->
+                        <form action="cadastre-se.php" method="post" id="form_cadastre-se" name="form_cadastre-se" enctype="text/plain">
+                            <label for="nome_cliente">Nome:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                </span>
+                                <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" maxlength="100" required placeholder="Digite o seu nome...">
+                            </div>
+                            <br>
+                            <label for="">Telefone:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+                                </span>
+                                <input type="text" class="form-control" id="telefone_cliente" name="telefone_cliente" maxlength="20" required placeholder="+55 DDD 999999999...">
+                            </div>
+                            <br>
+                            <label for="">EMAIL</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                </span>
+                                <input type="text" class="form-control" id="email_cliente" name="email_cliente" maxlength="100" required placeholder="email@email.com.br">
+                            </div>
+                            <br>
+                            <label for="">SENHA</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                </span>
+                                <input type="password" class="form-control" id="email_cliente" name="email_cliente" maxlength="12" required placeholder="Digite a sua senha">
+                            </div>
+                            <br>
+                            <label for="">CONFIRMAR SENHA</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                </span>
+                                <input type="password" class="form-control" id="email_cliente" name="email_cliente" maxlength="12" required placeholder="Confirme a sua senha">
+                            </div>
+                            <br>
+                            <input type="submit" value="Cadastrar" name="enviar" id="enviar" class="btn btn-danger btn-block">
+                        </form>
+                        <!-- fecha formulário -->
+                        <!-- Fecha alert-sucess -->
+                    </div>
+                    <!-- Fecha thumbnail -->
+                </div>
+                <!-- Fecha dimensionamento -->
             </div>
+
         </div>
-        <footer>
-            <?php include('../rodape.php'); ?>
-        </footer>
+
+            <footer>
+                <?php include('../rodape.php'); ?>
+            </footer>
     </main>
     <!-- Link arquivos Bootstrap js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

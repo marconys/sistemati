@@ -75,12 +75,16 @@ values (01,'cliente', 11959816510, 'cliente@cliente.com', '1234');
 create table tbreserva(
 id_reserva int(11) primary key auto_increment not null,
 id_cliente_reserva int(11) not null,
-hora_reserva datetime,
+data_reserva date not null,
+hora_reserva time not null,
 numero_mesa int (11) not null,
 obs_reserva varchar(100) null,
 valor_reserva decimal(10,2) not null
 
 )engine=InnoDB default charset=utf8;
+
+insert into tbreserva(id_reserva, id_cliente_reserva, data_reserva, hora_reserva, numero_mesa, obs_reserva, valor_reserva)
+values (1,1,"2022-09-10", "19:00:00", 20, "Ao lado da janela" ,120);
 
 -- índices da tabela tbprodutos
 
@@ -111,6 +115,11 @@ modify id_tipo int(11) not null auto_increment, auto_increment=4;
 -- auto incremento da  tbusuarios
 alter table tbusuarios 
 modify id_usuario int(11) not null auto_increment, auto_increment=5;
+
+-- auto incremento da  tbreservas
+
+alter table tbreserva
+modify id_reserva int(11) not null auto_increment, auto_increment=1;
 
 -- restrição (constraint) da tabela produtos
 alter table tbprodutos 
@@ -143,3 +152,14 @@ select * from tbtipos;
 select * from tbusuarios;
 select * from tbprodutos;
 select * from tbcliente;
+select * from tbreserva;
+
+select r.id_reserva,
+r.data_reserva,
+r.hora_reserva,
+r.numero_mesa,
+r.valor_reserva,
+c.nome_cliente
+from tbreserva r
+INNER JOIN tbcliente c on r.id_reserva = c.id_cliente
+where r.id_reserva = c.id_cliente;
