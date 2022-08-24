@@ -6,14 +6,38 @@ include('../config.php');
 //Conexão com banco
 include('../conexoes/conexao.php');
 
-$campos_insert = "id_tipo_produto,destaque_produto,descri_produto,resumo_produto,valor_produto,imagem_produto";
-if ($_POST) {
-    if ($_FILES['imagem_produto']['name']) {
-        $nome_img = $_FILES['imagem_produto']['name'];
-        $tmp_img = $_FILES['imagem_produto']['tmp_name'];
-        $pasta_img = "../images/" . $nome_img;
-        move_uploaded_file($tmp_img, $pasta_img);
-    }
+
+if($_POST){
+    
+        if (isset($_POST['enviar'])) {
+            $nome_img = $_FILES['imagem_produto']['name'];
+            $tmp_img = $_FILES['imagem_produto']['tmp_name'];
+            $pasta_img = "../images/" . $nome_img;
+            move_uploaded_file($tmp_img, $pasta_img);
+        }
+    
+
+        $id_tipo_produto = $_POST['id_tipo_produto'];
+        $destaque_produto = $_POST['destaque_produto'];        
+        $descri_produto = $_POST['descri_produto'];        
+        $resumo_produto = $_POST['resumo_produto'];        
+        $valor_produto = $_POST['valor_produto'];        
+        $imagem_produto = $_FILES['imagem_produto']['name'];
+
+        $campos_insert = "id_tipo_produto,destaque_produto,descri_produto,resumo_produto,valor_produto,imagem_produto";
+        $values = "$id_tipo_produto,'$destaque_produto','$descri_produto','$resumo_produto',$valor_produto,'$imagem_produto'";
+        
+        $query = "insert into tbprodutos ($campos_insert) values ($values);";
+        $resultado = $conexao->query($query);
+
+     // var_dump($$query);
+
+    //Após o insert direciona a pagina
+   if(mysqli_insert_id($conexao)){
+        header("location: produtos_lista.php");
+    }else{
+        header("location: produtos_lista.php");
+    } 
 }
 
 
@@ -45,12 +69,12 @@ $linha_fk = $lista_fk->fetch_assoc();
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </button>
                     </a>
-                    Atualizando Produtos
+                    Inserindo Produtos
                 </h2>
                 <div class="thumbnail">
                     <!-- Abre thumbnail -->
                     <div class="alert alert-danger" role="alert">
-                        <form action="produto_atualiza.php" method="post" id="form_produto_atualiza" name="form_produto_atualiza" enctype="multipart/form-data">
+                        <form action="produtos_insere.php" method="post" id="form_produtos_insere" name="form_produtos_insere" enctype="multipart/form-data">
                             <!--Inserir o campo id_produto oculto para uso no filtro -->
                             <input type="hidden" name="id_produto" id="id_produto">
                             <!-- Select id_tipo_produto -->
@@ -107,17 +131,6 @@ $linha_fk = $lista_fk->fetch_assoc();
                                 </textarea>
                             </div>
                             <br>
-                            <!-- radio disponivel_produto -->
-                            <label for="disponivel_produto">Disponivel?</label>
-                            <label for="disponivel_produto_s" class="radio-inline">
-                                <input type="radio" name="disponivel_produto" id="disponivel_produto" value="Sim">
-                                Sim
-                            </label>
-                            <label for="disponivel_produto_n" class="radio-inline">
-                                <input type="radio" name="disponivel_produto" id="disponivel_produto" value="Não" checked>
-                                Não
-                            </label>
-                            <br>
                             <!-- number valor_produto -->
                             <label for="valor_produto">Valor: R$</label>
                             <div class="input-group">
@@ -138,7 +151,7 @@ $linha_fk = $lista_fk->fetch_assoc();
                             </div>
                             <br>
                             <!-- Botão Enviar -->
-                            <input type="submit" value="Atualizar" name="enviar" id="enviar" class="btn btn-danger btn-block">
+                            <input type="submit" value="Cadastrar" name="enviar" id="enviar" class="btn btn-danger btn-block">
                         </form>
                     </div>
                 </div>

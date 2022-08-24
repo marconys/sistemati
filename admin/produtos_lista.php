@@ -87,9 +87,9 @@ $totalLinhas = $lista->num_rows;
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             </a>
                             <button class="btn btn-danger largButton btn-xs delete" 
-                            role="button" 
-                            data-nome="<?php echo $linha['descri_produto'];?>" 
-                            data-id="<?php echo $linha['id_produto'];?>">
+                            role="button"                             
+                            data-id="<?php echo $linha['id_produto'];?>"
+                            data-nome="<?php echo $linha['descri_produto'];?>" >
                             <span class="hidden-xs">Excluir</span>
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                             </button>
@@ -106,19 +106,20 @@ $totalLinhas = $lista->num_rows;
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button class="close" type="button" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title text-danger">Atenção!</h4>
+                    <button class="close" type="button"data-dismiss="modal" >&times;</button>
+                    <h4 class="modal-title text-danger">Atenção</h4>
                 </div>
+
                 <div class="modal-body">
-                    Deseja realmente<strong> excluir </strong> item?
+                    Deseja Realmente  <strong>Excluir</strong> o item? ?
                     <h3><span class="text-danger nome"></span></h3>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" type="button" class="btn btn-danger delete yes">Confirmar</a>
+                    <a href="#" type="button" class="btn btn-danger delete-yes">Confirmar</a>
                     <button class="btn btn-success" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
-        </div>                         
+        </div>
     </div> <!-- Fim do modal -->
     <!-- Link arquivos Bootstrap js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

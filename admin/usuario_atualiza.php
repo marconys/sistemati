@@ -37,9 +37,9 @@ if ($_POST) {
 
     //Após a ação a página será direcionada
     if (mysqli_insert_id($conexao)) {
-        header('location: usuario_lista.php');
+        header('location: usuarios_lista.php');
     } else {
-        header('location: usuario_lista.php');
+        header('location: usuarios_lista.php');
     }
 }
 
