@@ -8,10 +8,17 @@ include('acesso_com.php');
 //Incluindo o Arquivo de conexão
 include('../conexoes/conexao.php');
 
-//Selecionando os dados e ordenando por ordem alfabetica
-$consulta = "select * from tbusuarios order by login_usuario asc";
+//Buscando o nome do nível
+$consulta = "select u.id_usuario,
+u.login_usuario,
+u.foto_usuario,
+u.id_nivel_usuario,
+n.nome_nivel
+from tbusuarios u
+INNER JOIN tbnivel n on u.id_nivel_usuario = n.id_nivel";
 
-//Buscar a lista completa de usuarios
+
+// Buscar a lista completa de usuários
 $lista = $conexao->query($consulta);
 
 //Separar usuarios por linha
@@ -40,6 +47,7 @@ $totalLinhas = $lista->num_rows;
         <table class="table table-condensed table-hover tbopacidade" style="background-color: #afd9ee;">
             <!--thead>th*8-->
             <thead>                
+                <th class="foto_usuario">FOTO</th>
                 <th>ID</th>
                 <th>Login</th>
                 <th>Nível</th>                
@@ -57,22 +65,25 @@ $totalLinhas = $lista->num_rows;
                 <?php do { ?>
                     <tr>
                         <!-- Linha da tabela -->
-                        <td><?php echo $linha['id_usuario']; ?></td>
                         <td>
-                            <span class="visible-xs"><?php echo $linha['nivel_usuario'];?></span>
+                            <img src="../images/<?php echo $linha['foto_usuario']; ?>" alt="" width="100px">
+                        </td>
+                        <td><?php echo $linha['id_usuario']; ?></td>                       
+                        <td>
+                            <span class="visible-xs"><?php echo $linha['nome_nivel'];?></span>
                             <span class="hidden-xs"><?php echo $linha['login_usuario'];?></span>
                         </td>
                         <td>
                             <?php
-                            if ($linha['nivel_usuario'] == 'sup') {
-                                echo ("<span class='glyphicon glyphicon-lock text-danger aria-hidden='true'></span>");
-                            } else if($linha['nivel_usuario'] == 'com') {
+                            if ($linha['nome_nivel'] == 'Supervisor') {
+                                echo ("<span class='glyphicon glyphicon-briefcase text-danger aria-hidden='true'></span>");
+                            } else if($linha['nome_nivel'] == 'Comercial') {
                                 echo ("<span class='glyphicon glyphicon-shopping-cart text-info aria-hidden='true'></span>");
-                            } else if($linha['nivel_usuario'] == 'cli'){
+                            } else if($linha['nome_nivel'] == 'Cliente'){
                                 echo ("<span class='glyphicon glyphicon-user text-success aria-hidden='true'></span>");
                             }
                             ?>
-                            <?php echo $linha['nivel_usuario']; ?>
+                            <?php echo $linha['nome_nivel']; ?>
                         </td>                                                                      
                         <td>
                             <a href="usuario_atualiza.php?id_usuario=<?php echo $linha['id_usuario']; ?>" class="btn btn-warning largButton btn-xs">

@@ -46,28 +46,38 @@ create table tbusuarios(
 id_usuario int(11) not null,
 login_usuario varchar(30) not null unique,
 senha_usuario varchar(8) not null,
-nivel_usuario enum('sup', 'com', 'cli') not null
+id_nivel_usuario int(11) not null,
+foto_usuario varchar(60) default null
 )engine=InnoDB default charset=utf8;
 
-INSERT INTO `tbusuarios` (`id_usuario`, `login_usuario`, `senha_usuario`, `nivel_usuario`) VALUES
-(1, 'senac', '1234', 'sup'),
-(2, 'joao', '4568', 'com'),
-(3, 'maria', '7894', 'cli'),
-(4, 'well', '1234', 'sup'),
-(5, 'marconys', '1234', 'sup');
+INSERT INTO `tbusuarios` (`id_usuario`, `login_usuario`, `senha_usuario`, `id_nivel_usuario`, `foto_usuario`) VALUES
+(1, 'senac', '1234', 1, 'senac.png'),
+(2, 'joao', '4568', 2, 'joao.png'),
+(3, 'maria', '7894', 3, 'maria.png'),
+(4, 'well', '1234', 1, 'well.png'),
+(5, 'marconys', '1234', 1, 'marconys.png');
+
+
+create table tbnivel(
+id_nivel int(11) primary key auto_increment not null,
+nome_nivel varchar(20) not null
+)engine=InnoDB default charset=utf8;
+
+insert into tbnivel (id_nivel, nome_nivel) 
+values (1,'Supervisor'),(2,'Comercial'),(3,'Cliente');
 
 -- estrutura da tabela tbcliente
 
 create table tbcliente(
 id_cliente int(11) primary key auto_increment not null,
 nome_cliente varchar(60) not null,
-telefone_cliente bigint(14) not null,
+cpf_cliente varchar(11) not null unique,
 email_cliente varchar(32) not null unique,
 senha_cliente varchar(8) not null
 )engine=InnoDB default charset=utf8;
 
-insert into `tbcliente` (`id_cliente`, `nome_cliente`, `telefone_cliente`, `email_cliente`, `senha_cliente`)
-values (01,'cliente', 11959816510, 'cliente@cliente.com', '1234');
+insert into `tbcliente` (`id_cliente`, `nome_cliente`, `cpf_cliente`, `email_cliente`, `senha_cliente`)
+values (01,'cliente', 12345678910, 'cliente@cliente.com', '1234');
 
 
 -- Estrutura da tabela tbreserva
@@ -77,14 +87,22 @@ id_reserva int(11) primary key auto_increment not null,
 id_cliente_reserva int(11) not null,
 data_reserva date not null,
 hora_reserva time not null,
-numero_mesa int (11) not null,
-obs_reserva varchar(100) null,
-valor_reserva decimal(10,2) not null
+numero_mesa_reserva int (11) not null,
+numero_pessoas_reserva int (11) not null,
+motivo_reserva varchar(100) null,
+motivo_recusa varchar(100) null,
+valor_reserva decimal(10,2) not null,
+status_reserva varchar(20) null
 
 )engine=InnoDB default charset=utf8;
 
-insert into tbreserva(id_reserva, id_cliente_reserva, data_reserva, hora_reserva, numero_mesa, obs_reserva, valor_reserva)
-values (1,1,"2022-09-10", "19:00:00", 20, "Ao lado da janela" ,120);
+insert into tbreserva(id_reserva, id_cliente_reserva, data_reserva, hora_reserva, numero_mesa_reserva, 
+numero_pessoas_reserva, motivo_reserva, motivo_recusa, valor_reserva, status_reserva)
+values (1,1,"2022-09-10", "19:00:00", 20, 7, "Confraternização", "" ,5990, "Negado");
+		
+        insert into tbreserva(id_reserva, id_cliente_reserva, data_reserva, hora_reserva, numero_mesa_reserva, 
+numero_pessoas_reserva, motivo_reserva, motivo_recusa, valor_reserva, status_reserva)
+values (3,1,"2022-10-09", "19:00:00", 20, 7, "Aniversário", "" ,59, "Aprovado");
 
 -- índices da tabela tbprodutos
 
@@ -119,7 +137,7 @@ modify id_usuario int(11) not null auto_increment, auto_increment=5;
 -- auto incremento da  tbreservas
 
 alter table tbreserva
-modify id_reserva int(11) not null auto_increment, auto_increment=1;
+modify id_reserva int(11) not null auto_increment, auto_increment=3;
 
 -- restrição (constraint) da tabela produtos
 alter table tbprodutos 
@@ -130,6 +148,11 @@ references tbtipos (id_tipo) on delete no action  on update no action;
 alter table tbreserva
 add constraint id_cliente_reserva_fk foreign key (id_cliente_reserva)
 references tbcliente (id_cliente) on delete no action  on update no action;
+
+-- restrição (constraint) da tabela tbusuario
+alter table tbusuarios
+add constraint id_nivel_usuario_fk foreign key (id_nivel_usuario)
+references tbnivel (id_nivel) on delete no action  on update no action;
 
 create view vw_tbprodutos as 
 select p.id_produto,
@@ -153,13 +176,23 @@ select * from tbusuarios;
 select * from tbprodutos;
 select * from tbcliente;
 select * from tbreserva;
+select* from tbnivel;
 
-select r.id_reserva,
+
+select select r.id_reserva,
 r.data_reserva,
 r.hora_reserva,
-r.numero_mesa,
+r.motivo_reserva,
+r.numero_pessoas_reserva,
 r.valor_reserva,
+r.status_reserva,
 c.nome_cliente
 from tbreserva r
-INNER JOIN tbcliente c on r.id_reserva = c.id_cliente
-where r.id_reserva = c.id_cliente;
+INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente;
+
+select all u.id_usuario,
+u.login_usuario,
+u.foto_usuario,
+n.nome_nivel
+from tbusuarios u
+INNER JOIN tbnivel n on u.id_usuario = n.id_nivel and u.login_usuario = u.login_usuario;

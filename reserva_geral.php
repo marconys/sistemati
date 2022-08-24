@@ -27,25 +27,46 @@ include('./conexoes/conexao.php');
             </ol>
             <!--Imagens-->
             <div class="carousel-inner" role="listbox">
-                <div class="item active"><img src="images/reserva_1.jpg" alt="" class="center-block"></div>
-                <div class="item"><img src="images/reserva_2.jpg" alt="" class="center-block"></div>
-                <div class="item"><img src="images/reserva_3.jpg" alt="" class="center-block"></div>
+                <div class="item active">
+                    <div class=" item center-block oferta">
+                        <div class="titulo">
+                            <h1 class="">QUER TER 70% DE DESCONTO
+                                NO RODÍZIO?</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="center-block oferta">
+                        <div class="titulo">
+                            <h1 class="">E MAIS 10% DE DESCONTO
+                                EM TODAS AS BEBIDAS?</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="center-block oferta">
+                        <div class="titulo">
+                            <h1 class="">FAÇA AGORA UMA RESERVA COM MAIS DE 5 PESSOAS,
+                                E GARANTA JÁ ESTA SUPER OFERTA!
+                            </h1>
+                        </div>
+                    </div>
+                </div>
             </div>
             <a href="#reserva" class="left carousel-control" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Próximo</span>
-        </a>
-        <a href="#reserva" class="right carousel-control" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Anterior</span>
-        </a>
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
+            <a href="#reserva" class="right carousel-control" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
 
         </div>
         <br>
 
         <div class="col-sm-1 col-md-12">
             <div class="thumbnail alert-success">
-                <img src="images/icone_reservar.png" alt="">
                 <br>
                 <div class="alert-success">
                     <!-- Botão principal -->
@@ -60,9 +81,9 @@ include('./conexoes/conexao.php');
                     <div class="btn btn-group btn-group-justified" role="group">
                         <!-- Botão reservar -->
                         <div class="btn-group">
-                            <a href="admin/index.php">
-                                <button class="btn btn-success">
-                                    Reservar
+                            <a href="reserva_condicao.php">
+                                <button class="btn btn-primary">
+                                    Pedido de Reserva
                                 </button>
                             </a>
                         </div><!-- Fecha reservar -->

@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
 
 
 .fundofixo{
@@ -6,6 +7,28 @@
     -webkit-background-size: cover ;
     background-size: cover;
 }
+
+ div .oferta {
+    width: 100vw;
+    height: 50vh;
+    background-color: #ffd700 ;
+    background-size: cover;    
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
+
+.titulo{
+    width: 450px;
+    right: 200px;
+    text-align: center;
+    margin-right: 20%;
+    font-family: Ultra;
+    font-weight: 400;
+    color: red;
+}
+
 
 
 /*Ínicio da estilização das tabelas listar produtos, tipos e usuário */
@@ -25,6 +48,15 @@
     align-items: center;
     text-align: center;
     font-weight:bold;
+}
+
+.table td .foto_usuario{
+    border: 2px solid #000;
+    margin-top: 5px;
+}
+
+.foto_usuario{
+    width: 100px;     
 }
 
 .table td .largButton{

@@ -13,12 +13,13 @@ include('../conexoes/conexao.php');
 $consulta = "select r.id_reserva,
 r.data_reserva,
 r.hora_reserva,
-r.numero_mesa,
+r.motivo_reserva,
+r.numero_pessoas_reserva,
 r.valor_reserva,
+r.status_reserva,
 c.nome_cliente
 from tbreserva r
-INNER JOIN tbcliente c on r.id_reserva = c.id_cliente
-where r.id_reserva = c.id_cliente";
+INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente";
 
 //Buscar a lista completa de tipos
 $lista = $conexao->query($consulta);
@@ -53,14 +54,12 @@ $totalLinhas = $lista->num_rows;
                 <th>ID RESERVA</th>                
                 <th>DATA</th>
                 <th>HORA</th>
-                <th>MESA</th> 
+                <th>MOTIVO</th>
+                <th>MUMERO DE PESSOAS</th> 
                 <th>VALOR</th> 
                 <th>NOME CLIENTE</th>              
                 <th class="largButton">
-                    <a href="nova_reserva.php" class="btn largButton btn-primary btn-xs">
-                        <span class="hidden-xs">Adicionar<br></span>
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </a>
+                    <img src="../images/logochurrascopequeno.png" alt="" class="largButton">
                 </th>
             </thead> <!-- Final linha de cabeçalho da tabela -->
             <!-- tboby>tr>td*8 -->
@@ -71,13 +70,13 @@ $totalLinhas = $lista->num_rows;
                     <tr>
                         <!-- Linha da tabela -->
                         <td><?php echo $linha['id_reserva']; ?></td>
+                        <td class="hidden"><?php echo $linha['status_reserva']; ?></td>
                         <td>
-                            <span class="visible-xs"><?php echo $linha['hora_reserva'];?></span>
                             <span class="hidden-xs"><?php echo $linha['data_reserva'];?></span>
                         </td>
                         <td>
                             <?php
-                            if ($linha['id_reserva'] == null) {
+                            if ($linha['status_reserva'] == "Negado" || $linha['status_reserva'] == null) {
                                 echo ("<span class='glyphicon glyphicon-remove text-warning aria-hidden='true'></span>");
                             } else{
                                 echo ("<span class='glyphicon glyphicon-ok text-info aria-hidden='true'></span>");
@@ -85,19 +84,16 @@ $totalLinhas = $lista->num_rows;
                             ?>
                             <?php echo $linha['hora_reserva']; ?>                            
                         </td> 
-                        <td><?php echo $linha['numero_mesa']; ?></td> 
+                        <td><?php echo $linha['motivo_reserva']; ?></td>
+                        <td><?php echo $linha['numero_pessoas_reserva']; ?></td> 
                         <td><?php echo number_format($linha['valor_reserva'], 2, ',', '.'); ?></td>  
                         <td><?php echo $linha['nome_cliente']; ?></td>                                                                  
                         <td>
-                            <a href="reserva_atualiza.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-warning largButton btn-xs">
-                                <span class="hidden-xs">Alterar</span>
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                            </a>
                             <button class="btn btn-danger largButton btn-xs delete" 
                             role="button" 
                             data-nome="<?php echo $linha['data_reserva'];?>" 
-                            data-id="<?php echo $linha['id_reserva'];?>">
-                            <span class="hidden-xs">Excluir</span>
+                            data-id="<?php echo $linha['status_reserva'];?>">
+                            <span class="hidden-xs">Cancelar</span>
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                             </button>
                         </td>
@@ -140,7 +136,7 @@ $totalLinhas = $lista->num_rows;
             //Insere o nome do item na confirmação do modal
             $('span.nome').text(nome);
             //Envia o id através do link do butão confirmar
-            $('a.delete-yes').attr('href', 'reserva_excluir.php?id_reserva='+id);
+            $('a.delete-yes').attr('href', 'minha_reserva.php?status_reserva='+id);
             //Abre o Modal
             $('#myModal').modal('show');
 

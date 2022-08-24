@@ -61,23 +61,23 @@ include('../conexoes/conexao.php');
                     <div class="alert alert-success" role="alert">
                         <!-- Abre formulário -->
                         <form action="cadastre-se.php" method="post" id="form_cadastre-se" name="form_cadastre-se" enctype="text/plain">
-                            <label for="nome_cliente">Nome:</label>
+                            <label for="nome_cliente">NOME COMPLETO:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" maxlength="100" required placeholder="Digite o seu nome...">
+                                <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" maxlength="100" required placeholder="Digite o seu nome Completo...">
                             </div>
                             <br>
-                            <label for="">Telefone:</label>
+                            <label for="cpf_cliente">CPF:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" class="form-control" id="telefone_cliente" name="telefone_cliente" maxlength="20" required placeholder="+55 DDD 999999999...">
+                                <input type="text" class="form-control" id="cpf_cliente" name="cpf_cliente" maxlength="11" required placeholder="Digite o seu CPF sem pontos e traços...">
                             </div>
                             <br>
-                            <label for="">EMAIL</label>
+                            <label for="email_cliente">EMAIL</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
@@ -91,14 +91,6 @@ include('../conexoes/conexao.php');
                                     <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                                 </span>
                                 <input type="password" class="form-control" id="email_cliente" name="email_cliente" maxlength="12" required placeholder="Digite a sua senha">
-                            </div>
-                            <br>
-                            <label for="">CONFIRMAR SENHA</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                                </span>
-                                <input type="password" class="form-control" id="email_cliente" name="email_cliente" maxlength="12" required placeholder="Confirme a sua senha">
                             </div>
                             <br>
                             <input type="submit" value="Cadastrar" name="enviar" id="enviar" class="btn btn-danger btn-block">
