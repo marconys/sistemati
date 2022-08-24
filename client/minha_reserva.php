@@ -76,7 +76,7 @@ $totalLinhas = $lista->num_rows;
                         </td>
                         <td>
                             <?php
-                            if ($linha['status_reserva'] == "Negado" || $linha['status_reserva'] == null) {
+                            if ($linha['status_reserva'] == "Negado" || $linha['status_reserva'] == 'Inativa') {
                                 echo ("<span class='glyphicon glyphicon-remove text-warning aria-hidden='true'></span>");
                             } else{
                                 echo ("<span class='glyphicon glyphicon-ok text-info aria-hidden='true'></span>");
@@ -89,11 +89,11 @@ $totalLinhas = $lista->num_rows;
                         <td><?php echo number_format($linha['valor_reserva'], 2, ',', '.'); ?></td>  
                         <td><?php echo $linha['nome_cliente']; ?></td>                                                                  
                         <td>
-                            <button class="btn btn-danger largButton btn-xs delete" 
-                            role="button" 
-                            data-nome="<?php echo $linha['data_reserva'];?>" 
-                            data-id="<?php echo $linha['status_reserva'];?>">
-                            <span class="hidden-xs">Cancelar</span>
+                        <button class="btn btn-danger largButton btn-xs delete" 
+                            role="button"                             
+                            data-id="<?php echo $linha['id_reserva'];?>"
+                            data-nome="<?php echo $linha['data_reserva'];?>" >
+                            <span class="hidden-xs">Excluir</span>
                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                             </button>
                         </td>
@@ -117,7 +117,7 @@ $totalLinhas = $lista->num_rows;
                     <h3><span class="text-danger nome"></span></h3>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" type="button" class="btn btn-danger delete yes">Confirmar</a>
+                    <a href="#" type="button" class="btn btn-danger delete-yes">Confirmar</a>
                     <button class="btn btn-success" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -136,7 +136,7 @@ $totalLinhas = $lista->num_rows;
             //Insere o nome do item na confirmação do modal
             $('span.nome').text(nome);
             //Envia o id através do link do butão confirmar
-            $('a.delete-yes').attr('href', 'minha_reserva.php?status_reserva='+id);
+            $('a.delete-yes').attr('href', 'reserva_excluir.php?id_reserva='+id);
             //Abre o Modal
             $('#myModal').modal('show');
 

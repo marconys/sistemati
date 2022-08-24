@@ -5,8 +5,8 @@ include('acesso_com.php');
 include('../conexoes/conexao.php');
 
 $id_prod = $_GET['id_produto'];
-//Removendo usando músculos (Força bruta)
-/*$query = "delete from tbprodutos where id_produto = $id_prod;";
+/*//Removendo usando músculos (Força bruta)
+$query = "delete from tbprodutos where id_produto = $id_prod;";
 $resultado = $conexao->query($query);
 
 if(mysqli_insert_id($conexao)){
@@ -16,7 +16,7 @@ if(mysqli_insert_id($conexao)){
 }
 */
 //Removendo usando o método acumulador (vai que precisa outra hora)
-$query = "update from tbprodutos set disponivel_produto = default where id_produto = $id_prod;";
+$query = "update tbprodutos set disponivel_produto = default where id_produto = $id_prod;";
 $resultado = $conexao->query($query);
 
 if(mysqli_insert_id($conexao)){
