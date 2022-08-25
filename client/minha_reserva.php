@@ -19,7 +19,7 @@ r.status_reserva,
 c.nome_cliente
 from tbreserva r
 INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente   
-and r.status_reserva = 'Aprovado' or r.status_reserva = 'Em análise'";
+and r.status_reserva = 'Confirmada' or r.status_reserva = 'Em análise'";
 
 //Buscar a lista completa de tipos
 $lista = $conexao->query($consulta);

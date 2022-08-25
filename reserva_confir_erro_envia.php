@@ -49,7 +49,7 @@ use PHPMailer\PHPMailer\PHPMailer;
                 $email->SMTPSecure = "tls";
                 $email->SMTPAuth = "true";
                 $email->Username = "marconyspinheiro@yahoo.com.br";
-                $email->Password = "ecfidptogxyfsyaq";
+                $email->Password = "";
 
                 //Configuração da msg                
                 $email->setFrom($email->Username, "Churrasqueiro & Churrascow"); // remetente

@@ -81,6 +81,8 @@ $totalLinhas = $lista->num_rows;
                                 echo ("<span class='glyphicon glyphicon-shopping-cart text-info aria-hidden='true'></span>");
                             } else if($linha['nome_nivel'] == 'Cliente'){
                                 echo ("<span class='glyphicon glyphicon-user text-success aria-hidden='true'></span>");
+                            } else{
+                                echo ("<span class='glyphicon glyphicon-remove text-success aria-hidden='true'></span>");
                             }
                             ?>
                             <?php echo $linha['nome_nivel']; ?>
@@ -118,7 +120,7 @@ $totalLinhas = $lista->num_rows;
                     <h3><span class="text-danger nome"></span></h3>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" type="button" class="btn btn-danger delete yes">Confirmar</a>
+                    <a href="#" type="button" class="btn btn-danger delete-yes">Confirmar</a>
                     <button class="btn btn-success" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
