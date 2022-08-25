@@ -6,7 +6,7 @@ include('../conexoes/conexao.php');
 
 $id_user= $_GET['id_usuario'];
 //Removendo usando músculos (Força bruta)
-$query = "delete from tbnivel where id_usuario = $id_user;";
+$query = "delete from tbusuarios where id_usuario = $id_user;";
 $resultado = $conexao->query($query);
 
 if(mysqli_insert_id($conexao)){

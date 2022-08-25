@@ -82,7 +82,7 @@ $totalLinhas = $lista->num_rows;
                             } else if($linha['nome_nivel'] == 'Cliente'){
                                 echo ("<span class='glyphicon glyphicon-user text-success aria-hidden='true'></span>");
                             } else{
-                                echo ("<span class='glyphicon glyphicon-remove text-success aria-hidden='true'></span>");
+                                echo ("<span class='glyphicon glyphicon-remove text-danger aria-hidden='true'></span>");
                             }
                             ?>
                             <?php echo $linha['nome_nivel']; ?>
