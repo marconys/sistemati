@@ -6,7 +6,7 @@ include('../conexoes/conexao.php');
 
 $id_prod = $_GET['id_reserva'];
 //Removendo usando o método acumulador (vai que precisa outra hora)
-$query = "update tbreserva set status_reserva = default where id_reserva = $id_prod;";
+$query = "update tbreserva set status_reserva = 'Inativa', parecer_reserva = 'Cancelado Pelo cliente' where id_reserva = $id_prod;";
 $resultado = $conexao->query($query);
 
 if(mysqli_insert_id($conexao)){
@@ -16,3 +16,17 @@ if(mysqli_insert_id($conexao)){
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Cancelamento</title>
+</head>
+<body>
+    
+    
+</body>
+</html>

@@ -1,6 +1,7 @@
 <?php
-//Incluindo variavel de ambiente e conexão com o banco
+//Variaveis de ambiente
 include('config.php');
+//Conexão com banco
 include('./conexoes/conexao.php');
 
 ?>
@@ -71,7 +72,7 @@ include('./conexoes/conexao.php');
                 <div class="thumbnail">
                     <div class="alert alert-success" role="alert">
                         <!-- Abre formulário -->
-                        <form action="cadastre-se.php" method="post" id="form_cadastre-se" name="form_cadastre-se" enctype="text/plain">
+                        <form action="reserva_confir_erro_envia.php" method="post" id="form_reserva_confir_erro_envia" name="form_reserva_confir_erro_envia" enctype="text/plain">
                             <label for="data_reserva">QUAL A DATA DA RESERVA?</label>
                             <div class="input-group">
                                 <span class="input-group-addon">

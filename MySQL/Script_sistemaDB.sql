@@ -77,7 +77,7 @@ senha_cliente varchar(8) not null
 )engine=InnoDB default charset=utf8;
 
 insert into `tbcliente` (`id_cliente`, `nome_cliente`, `cpf_cliente`, `email_cliente`, `senha_cliente`)
-values (01,'cliente', 12345678910, 'cliente@cliente.com', '1234');
+values (2,'marconys', 12345678911, 'marconys@gmail.com', '1234');
 
 
 -- Estrutura da tabela tbreserva
@@ -102,7 +102,7 @@ values (1,1,"2022-09-10", "19:00:00", 20, 7, "Confraternização", "" ,5990, "Ne
 		
         insert into tbreserva(id_reserva, id_cliente_reserva, data_reserva, hora_reserva, numero_mesa_reserva, 
 numero_pessoas_reserva, motivo_reserva, motivo_recusa, valor_reserva, status_reserva)
-values (3,1,"2022-10-09", "19:00:00", 20, 7, "Aniversário", "" ,59, "Aprovado");
+values (default,2,"2022-10-09", "19:00:00", 20, 7, "Aniversário", "" ,59.90, default);
 
 -- índices da tabela tbprodutos
 
@@ -179,7 +179,7 @@ select * from tbreserva;
 select* from tbnivel;
 
 
-select select r.id_reserva,
+select r.id_reserva,
 r.data_reserva,
 r.hora_reserva,
 r.motivo_reserva,
@@ -188,7 +188,7 @@ r.valor_reserva,
 r.status_reserva,
 c.nome_cliente
 from tbreserva r
-INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente;
+INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente and  r.status_reserva = 'Aprovado' or r.status_reserva = 'Em análise';
 
 select all u.id_usuario,
 u.login_usuario,

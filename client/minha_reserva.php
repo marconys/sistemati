@@ -8,7 +8,6 @@ include('../admin/acesso_com.php');
 //Incluindo o Arquivo de conexão
 include('../conexoes/conexao.php');
 
-
 //Selecionando os dados e ordenando por ordem alfabetica
 $consulta = "select r.id_reserva,
 r.data_reserva,
@@ -19,7 +18,8 @@ r.valor_reserva,
 r.status_reserva,
 c.nome_cliente
 from tbreserva r
-INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente";
+INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente   
+and r.status_reserva = 'Aprovado' or r.status_reserva = 'Em análise'";
 
 //Buscar a lista completa de tipos
 $lista = $conexao->query($consulta);
@@ -54,6 +54,7 @@ $totalLinhas = $lista->num_rows;
                 <th>ID RESERVA</th>                
                 <th>DATA</th>
                 <th>HORA</th>
+                <th>STATUS DA RESERVA</th>
                 <th>MOTIVO</th>
                 <th>MUMERO DE PESSOAS</th> 
                 <th>VALOR</th> 
@@ -74,15 +75,18 @@ $totalLinhas = $lista->num_rows;
                         <td>
                             <span class="hidden-xs"><?php echo $linha['data_reserva'];?></span>
                         </td>
+                        <td><?php echo $linha['hora_reserva']; ?></td>
                         <td>
                             <?php
                             if ($linha['status_reserva'] == "Negado" || $linha['status_reserva'] == 'Inativa') {
                                 echo ("<span class='glyphicon glyphicon-remove text-warning aria-hidden='true'></span>");
+                            } else if($linha['status_reserva'] == "Em análise"){
+                                echo ("<span class='glyphicon glyphicon-time text-warning aria-hidden='true'></span>");
                             } else{
-                                echo ("<span class='glyphicon glyphicon-ok text-info aria-hidden='true'></span>");
-                            } 
+                                echo ("<span class='glyphicon glyphicon-ok text-success aria-hidden='true'></span>");
+                            }
                             ?>
-                            <?php echo $linha['hora_reserva']; ?>                            
+                            <?php echo $linha['status_reserva']; ?>                           
                         </td> 
                         <td><?php echo $linha['motivo_reserva']; ?></td>
                         <td><?php echo $linha['numero_pessoas_reserva']; ?></td> 

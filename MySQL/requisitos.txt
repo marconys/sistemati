@@ -32,6 +32,7 @@ hora_reserva time
 numero_pessoas_reserva int
 motivo_reserva varchar 100 null
 valor_reserva decimal 10,2
+parecer_reserva varchar 100 null
 
 tbcliente(
 id_cliente int(11) primary key auto_increment not null,

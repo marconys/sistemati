@@ -3,6 +3,31 @@
 include('../config.php');
 include('../conexoes/conexao.php');
 
+
+
+
+    if (isset($_POST['enviar'])) {
+
+    $nome_cliente = $_POST['nome_cliente'];        
+    $cpf_cliente = $_POST['cpf_cliente'];        
+    $email_cliente = $_POST['email_cliente'];        
+    $senha_cliente = $_POST['senha_cliente'];
+
+    $campos_insert = "nome_cliente,cpf_cliente,email_cliente,senha_cliente";
+    $values = "'$nome_cliente','$cpf_cliente','$email_cliente','$senha_cliente'";
+    
+    $query = "insert into tbcliente ($campos_insert) values ($values);";
+    $resultado = $conexao->query($query);
+
+ // var_dump($$query);
+
+//Após o insert direciona a pagina
+    if(mysqli_insert_id($conexao)){
+        header("location: ../admin/index.php");
+    }else{
+        header("location: ../index.php");
+    }
+}    
 ?>
 
 <!DOCTYPE html>
