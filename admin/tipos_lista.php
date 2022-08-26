@@ -9,7 +9,7 @@ include('acesso_com.php');
 include('../conexoes/conexao.php');
 
 //Selecionando os dados e ordenando por ordem alfabetica
-$consulta = "select * from tbtipos order by sigla_tipo asc";
+$consulta = "select * from tbtipos order by id_tipo asc";
 
 //Buscar a lista completa de tipos
 $lista = $conexao->query($consulta);
@@ -60,7 +60,6 @@ $totalLinhas = $lista->num_rows;
                         <!-- Linha da tabela -->
                         <td><?php echo $linha['id_tipo']; ?></td>
                         <td>
-                            <span class="visible-xs"><?php echo $linha['rotulo_tipo'];?></span>
                             <span class="hidden-xs"><?php echo $linha['sigla_tipo'];?></span>
                         </td>
                         <td>

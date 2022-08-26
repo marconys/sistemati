@@ -17,9 +17,9 @@ if ($_POST) {
 
     //Consulta(query) Sql para inserção dos dados
     $query = "update tbtipos
-                            set sigla_tipo = '" . $sigla_tipo. "',
+                            set sigla_tipo = '" . $sigla_tipo . "',
                             rotulo_tipo = '" . $rotulo_tipo . "',
-                            disponivel_tipo = '" . $disponivel_tipo ."'
+                            disponivel_tipo = '" . $disponivel_tipo . "'
                             where id_tipo = " . $id_filtro . ";";
 
     $resultado = $conexao->query($query);
@@ -39,7 +39,7 @@ $lista = $conexao->query($query_busca);
 $linha = $lista->fetch_assoc();
 $totalLinhas = $lista->num_rows;
 
-$consulta_fk = "select * from tbtipos order by rotulo_tipo asc";
+$consulta_fk = "select * from tbtipos order by sigla_tipo asc";
 
 $lista_fk = $conexao->query($consulta_fk);
 $linha_fk = $lista_fk->fetch_assoc();
@@ -78,59 +78,43 @@ $totalLinha_fk = $lista_fk->num_rows;
                         <form action="tipos_atualiza.php" method="post" id="form_tipos_atualiza" name="tipos_atualiza" enctype="multipart/form-data">
                             <!--Inserir o campo id_usuário oculto para uso no filtro -->
                             <input type="hidden" name="id_tipo" id="id_tipo" value="<?php echo $linha['id_tipo']; ?>">
-                            <!-- Select id_nivel_usuario -->
-                            <label for="rotulo_tipo">Rotulo:</label>
+                             <!-- rotulo_tipo -->
+                            <label for="rotulo_tipo">ROTULO:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                                 </span>
-
-                                <select name="rotulo_tipo" id="rotulo_tipo" class="form-control" required>
-                                    <?php do { ?>
-                                        <option value="<?php echo $linha_fk['id_tipo']; ?>" <?php
-                                        if (!(strcmp($linha_fk['id_tipo'], $linha['rotulo_tipo']))) {
-                                            echo "selected=\"selected\"";
-                                            } ?>>
-
-                                            <?php echo $linha_fk['rotulo_tipo']; ?>
-                                        </option>
-                                    <?php } while ($linha_fk = $lista_fk->fetch_assoc());
-                                    $linhas_fk = mysqli_num_rows($lista_fk);
-                                    if ($linhas_fk > 0) {
-                                        mysqli_data_seek($lista_fk, 0);
-                                        $linhas_fk = $lista_fk->fetch_assoc();
-                                    }
-                                    ?>
-                                </select>
-                                </div>
-
-                                <!-- number valor_produto -->
-                                <label for="sigla_tipo">SIGLA:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-                                    </span>
-                                    <input type="text" name="sigla_tipo" id="sigla_tipo"  class="form-control" value="<?php echo $linha['sigla_tipo']; ?>">
-                                </div>
-                                <br>
-                            <label for="disponivel_tipo">Disponível?</label>
-                                <label for="disponivel_tipo_s" class="radio-inline">
-                                    <input type="radio" name="disponivel_tipo" id="disponivel_tipo" value="Sim" <?php echo $linha['disponivel_tipo'] == "Sim" ? "checked" : null; ?>>
-                                    Sim
-                                </label>
-                                <label for="disponivel_tipo_n" class="radio-inline">
-                                    <input type="radio" name="disponivel_tipo" id="disponivel_tipo" value="Não"<?php echo $linha['disponivel_tipo'] == "Não" ? "checked" : null; ?>>
-                                    Não
-                                </label>
+                                <input type="text" name="rotulo_tipo" id="rotulo_tipo" class="form-control" maxlength="15" value="<?php echo $linha['rotulo_tipo']; ?>">
                             </div>
-                            <br>                        
-                            
-                            <!-- Botão Enviar -->
-                            <input type="submit" value="Atualizar" name="enviar" id="enviar" class="btn btn-danger btn-block">
-                        </form>
+                            <br>
+                            <!-- sigla_tipo -->
+                            <label for="sigla_tipo">SIGLA:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                                </span>
+                                <input type="text" name="sigla_tipo" id="sigla_tipo" class="form-control" maxlength="3"  value="<?php echo $linha['sigla_tipo']; ?>">
+                            </div>
+                            <br>
+                            <!-- disponivel_tipo -->
+                            <label for="disponivel_tipo">Disponível?</label>
+                            <label for="disponivel_tipo_s" class="radio-inline">
+                                <input type="radio" name="disponivel_tipo" id="disponivel_tipo" value="Sim" <?php echo $linha['disponivel_tipo'] == "Sim" ? "checked" : null; ?>>
+                                Sim
+                            </label>
+                            <label for="disponivel_tipo_n" class="radio-inline">
+                                <input type="radio" name="disponivel_tipo" id="disponivel_tipo" value="Não" <?php echo $linha['disponivel_tipo'] == "Não" ? "checked" : null; ?>>
+                                Não
+                            </label>
                     </div>
+                    <br>
+
+                    <!-- Botão Enviar -->
+                    <input type="submit" value="Atualizar" name="enviar" id="enviar" class="btn btn-danger btn-block">
+                    </form>
                 </div>
             </div>
+        </div>
         </div>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
