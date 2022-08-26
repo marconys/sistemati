@@ -65,7 +65,7 @@ $totalLinhas = $lista->num_rows;
                         </td>
                         <td>
                             <?php
-                            if ($linha['quantidade_tipo'] == 0) {
+                            if ($linha['disponivel_tipo'] == 'Não') {
                                 echo ("<span class='glyphicon glyphicon-remove text-warning aria-hidden='true'></span>");
                             } else{
                                 echo ("<span class='glyphicon glyphicon-ok text-info aria-hidden='true'></span>");
@@ -74,7 +74,7 @@ $totalLinhas = $lista->num_rows;
                             <?php echo $linha['rotulo_tipo']; ?>
                         </td>                                                                      
                         <td>
-                            <a href="usuario_atualiza.php?id_tipo=<?php echo $linha['id_tipo']; ?>" class="btn btn-warning largButton btn-xs">
+                            <a href="tipos_atualiza.php?id_tipo=<?php echo $linha['id_tipo']; ?>" class="btn btn-warning largButton btn-xs">
                                 <span class="hidden-xs">Alterar</span>
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             </a>
@@ -106,7 +106,7 @@ $totalLinhas = $lista->num_rows;
                     <h3><span class="text-danger nome"></span></h3>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" type="button" class="btn btn-danger delete yes">Confirmar</a>
+                    <a href="#" type="button" class="btn btn-danger delete-yes">Confirmar</a>
                     <button class="btn btn-success" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
