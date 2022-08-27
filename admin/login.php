@@ -110,7 +110,7 @@ if ($_POST) {
                                         </span>
                                         <input type="password" name="senha_usuario" id="senha_usuario" class="form-control" required autocomplete="off" placeholder="Digite sua senha."><br>
                                     <div class="input-group-addon alert-success">
-                                        <div><a href="../client/cadastre-se.php"><span class="text-success">Cadastre-se</span></a></div>
+                                        <div><a href="../client/cadastrar_cliente.php"><span class="text-success">Cadastre-se</span></a></div>
                                         <div><a href="client/reset_senha.php"><span class="text-warning">Esqueceu sua senha?</span></a></div>
                                     </div>
                                     </p>

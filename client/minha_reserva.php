@@ -8,6 +8,8 @@ include('../admin/acesso_com.php');
 //Incluindo o Arquivo de conexão
 include('../conexoes/conexao.php');
 
+$email = $_SESSION['login_usuario'];
+
 //Selecionando os dados e ordenando por ordem alfabetica
 $consulta = "select r.id_reserva,
 r.data_reserva,
@@ -16,10 +18,11 @@ r.motivo_reserva,
 r.numero_pessoas_reserva,
 r.valor_reserva,
 r.status_reserva,
+C.email_cliente,
 c.nome_cliente
 from tbreserva r
 INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente   
-and r.status_reserva = 'Confirmada' or r.status_reserva = 'Em análise'";
+and c.email_cliente = '$email' and r.status_reserva = 'Confirmada' or r.status_reserva = 'Em análise'";
 
 //Buscar a lista completa de tipos
 $lista = $conexao->query($consulta);
@@ -49,7 +52,7 @@ $totalLinhas = $lista->num_rows;
     <main class="container">
         <h1 class="breadcrump alert-danger glyphicon glyphicon-list-alt">Minhas Reservas</h1>
         <table class="table table-condensed table-hover tbopacidade" style="background-color: #e4b9b9;">
-            <!--thead>th*8-->
+            
             <thead>
                 <th>ID RESERVA</th>                
                 <th>DATA</th>

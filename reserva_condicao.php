@@ -55,97 +55,38 @@ include('./conexoes/conexao.php');
                     </a>
                     Faça a sua seserva agora!
                 </h2>
-                <div class="breadcrumb tex-danger">
-                    <h3 class="titulo titulo-oferta">POR APENAS 50,90</h3>
-                    <h4>Faça uma reserva com mais de 5 pessoas e garanta
-                        70% de desconto no rodízio para o titular da Reserva,e mais 10%
-                        de desconto em todas as bebidas da comada da mesa associada a reserva
-                    </h4>
-                    <h5>As reservas são permitidas com um prazo mínimo de 12 horas de antecedência
-                        e no máximo 60 dias.
-                    </h5>
-                </div>
-
-
-
-                <!-- Abre thumbnail -->
                 <div class="thumbnail">
-                    <div class="alert alert-success" role="alert">
-                        <!-- Abre formulário -->
-                        <form action="reserva_confir_erro_envia.php" method="post" id="form_reserva_confir_erro_envia" name="form_reserva_confir_erro_envia" enctype="text/plain">
-                            <label for="data_reserva">QUAL A DATA DA RESERVA?</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                </span>
-                                <input type="date" class="form-control" id="data_reserva" name="data_reserva" required>
-                            </div>
-                            <br>
-                            <label for="hora_reserva">QUAL O HORÁRIO DA RESERVA?</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                                </span>
-                                <input type="time" class="form-control" id="hora_reserva" name="hora_reserva" required>
-                            </div>
-                            <br>
-                            <label for="numero_pessoas_reserva">QUANTAS PESSOAS?</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-                                </span>
-                                <input type="number" class="form-control" id="numero_pessoas_reserva" name="numero_pessoas_reserva" min="1" step="1" required>
-                            </div>
-                            <br>
-                            <label for="motivo_reserva">MOTIVO ESPECIAL?</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" class="form-control" id="motivo_reserva" name="motivo_reserva" maxlength="10" placeholder="Conta pra gente o motivo especial...">
-                            </div>
-                            <br>
-                            <label for="nome_cliente">NOME COMPLETO</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" maxlength="100" required placeholder="Digite o seu nome completo...">
-                            </div>
-                            <br>
-                            <label for="email_cliente">EMAIL</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" class="form-control" id="email_cliente" name="email_cliente" maxlength="100" required placeholder="email@email.com.br">
-                            </div>
-                            <br>
-                            <label for="cpf_cliente">CPF</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" class="form-control" id="cpf_cliente" name="cpf_cliente" maxlength="11" required placeholder="Digite o seu CPF Sem pontos e traços">
-                            </div>
-                            <br>
-                            <label for="senha_cliente">SENHA</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                                </span>
-                                <input type="password" class="form-control" id="senha_cliente" name="senha_cliente" maxlength="12" required placeholder="Digite a sua senha...">
-                            </div>
-                            <br>
-                            <input type="submit" value="ENVIAR" name="enviar" id="enviar" class="btn btn-danger btn-block">
-                        </form>
-                        <!-- fecha formulário -->
-                        <!-- Fecha alert-sucess -->
+                    <div class="breadcrumb tex-danger">
+                        <h2 class="titulo titulo-oferta">POR APENAS 50,90</h2>
+                        <h3>Faça uma reserva com mais de 5 pessoas e garanta
+                            70% de desconto no rodízio para o titular da Reserva,e mais 10%
+                            de desconto em todas as bebidas da comada da mesa associada a reserva
+                        </h3>
+                        <h4>As reservas são permitidas com um prazo mínimo de 12 horas de antecedência
+                            e no máximo 60 dias.
+                        </h4>
                     </div>
-                    <!-- Fecha thumbnail -->
+                    <!-- Botão RESERVE JÁ! -->
+                    <div class="btn btn-group btn-group-justified" role="group">
+                        <!-- Botão RESERVE JÁ! -->
+                        <div class="btn-group">
+                            <a href="client/cadastrar_cliente.php">
+                                <button class="btn btn-primary">
+                                    RESERVE JÁ!
+                                </button>
+                            </a>
+                        </div><!-- RESERVE JÁ! -->
+                    </div>
+                    <!-- Fecha BotãoRESERVE JÁ! -->
+
+
+                    <!-- fecha formulário -->
+                    <!-- Fecha alert-sucess -->
                 </div>
-                <!-- Fecha dimensionamento -->
+                <!-- Fecha thumbnail -->
             </div>
+            <!-- Fecha dimensionamento -->
+        </div>
 
         </div>
 

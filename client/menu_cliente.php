@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    
+    <meta charset="UTF-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Cliente</title>
 </head>
-<body>
+<body class="fundofixo">
     <nav class="nav navbar-inverse">
     <div class="container-fluid">
         <!-- Agrupamento para exibição em mobile-->
@@ -28,11 +27,10 @@
                         Olá, <?php echo $_SESSION['login_usuario'];?>
                     </button>
                 </li>
-                <li class="active"><a href="index.php">Login</a></li>
-                <li><a href="minha_reserva.php">Reservas</a></li>
-                <li><a href="pedidos_cliente.php">Meus Pedidos</a></li>
-                <li><a href="mostrar_dados.php">Minha Conta</a></li>
                 <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li><a href="nova_reserva.php">Nova Reserva</a></li>
+                <li><a href="minha_reserva.php">Minhas Reservas</a></li>
+                <li><a href="#">Minha Conta</a></li>
                 <li><a href="../admin/logout.php"><span class="glyphicon glyphicon-log-out"></span></a></li>                
             </ul>
         </div> <!-- Fecha nav a direita-->
