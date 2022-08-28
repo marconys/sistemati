@@ -1,9 +1,4 @@
-<?php 
-# Comentário de linhas 
-// Comentário de linhas
-/*
-Comentário de bloco
-*/ 
+<?php
 
 $hostname_conexao = "localhost";
 $database_conexao = "sistemaDB";
@@ -16,6 +11,7 @@ $conexao = new mysqli($hostname_conexao,
 $username_conexao,
 $password_conexao, 
 $database_conexao);
+                     
 
 // Definindo o conjunto de caracteres da conexão
 mysqli_set_charset($conexao, $charset_conexao);
@@ -25,5 +21,6 @@ if($conexao -> connect_error)
 {
     echo "Error: ".$conexao -> connect_error;
 }
+
 
 ?>

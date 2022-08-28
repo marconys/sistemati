@@ -76,7 +76,7 @@ $totalLinha_fk = $lista_fk->num_rows;
                     <!-- Abre thumbnail -->
                     <div class="alert alert-danger" role="alert">
                         <form action="tipos_atualiza.php" method="post" id="form_tipos_atualiza" name="tipos_atualiza" enctype="multipart/form-data">
-                            <!--Inserir o campo id_usuário oculto para uso no filtro -->
+                            <!--Inserir o campo id_tipo oculto -->
                             <input type="hidden" name="id_tipo" id="id_tipo" value="<?php echo $linha['id_tipo']; ?>">
                              <!-- rotulo_tipo -->
                             <label for="rotulo_tipo">ROTULO:</label>

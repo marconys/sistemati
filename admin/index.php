@@ -12,7 +12,11 @@ include('../config.php');
 </head>
 <body>
     <?php include('menu_adm.php');
-    include('menu_options.php');    
+    include('menu_options.php');     
+
+
     ?>
+
+<a name="destaques">&nbsp;</a>
 </body>
 </html>

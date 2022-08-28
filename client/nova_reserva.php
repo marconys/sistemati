@@ -8,6 +8,46 @@ include('../admin/acesso_com.php');
 //Incluindo o Arquivo de conexão
 include('../conexoes/conexao.php');
 
+//Filtra o usuário logado
+$email_cliente = $_SESSION['login_usuario'];
+
+
+
+if($_POST){
+
+    
+//consulta no banco de dados
+$consulta = "select from tbcliente where email_cliente = '$email_cliente' order by id_cliente";
+
+
+    
+    $id_cliente_reserva = $_POST['id_cliente'];
+    $data_reserva = $_POST['data_reserva'];
+    $hora_reserva = $_POST['hora_reserva'];
+    $numero_pessoas_reserva = $_POST['numero_pessoas_reserva'];
+    $motivo_reserva = $_POST['motivo_reserva'];
+
+    $campos_insert = "id_cliente_reserva,data_reserva,hora_reserva,numero_pessoas_reserva,motivo_reserva";
+        $values = "$id_cliente_reserva,'$data_reserva','$hora_reserva', $numero_pessoas_reserva, '$motivo_reserva'";
+        
+        $query = "insert into tbcliente ($campos_insert) values ($values);";
+        $resultado = $conexao->query($query);
+
+        
+
+
+    //Após o insert direciona a pagina
+   if(mysqli_insert_id($conexao)){
+        header("location: minha_reserva.php");
+    }else{
+        header("location: minha_reserva.php");
+    }
+
+
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +81,9 @@ include('../conexoes/conexao.php');
                     <!-- Abre thumbnail -->
                     <div class="alert alert-success" role="alert">
                         <!-- Abre formulário -->
-                        <form action="client/cadastro_cliente_reserva.php" method="post" id="form_cadastro_cliente_reserva" name="form_cadastro_cliente_reserva" enctype="text/plain">
+                        <form action="nova_reserva.php" method="post" id="form_nova_reserva" name="form_nova_reserva" enctype="text/plain">                            
+                            <!--Inserir o campo id_cliente_reserva -->
+                            <input class="hidden" type="text" name="id_cliente" id="id_cliente">
                             <label for="data_reserva">QUAL A DATA DA RESERVA?</label>
                             <div class="input-group">
                                 <span class="input-group-addon">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área Administrativa</title>
+    <title>Área Administrativa Reservas</title>
 </head>
 <body>
     <nav class="nav navbar-inverse">
@@ -29,11 +29,10 @@
                     </button>
                 </li>
                 <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="produtos_lista.php">Produtos</a></li>
-                <li><a href="tipos_lista.php">Tipos</a></li>
-                <li><a href="usuarios_lista.php">Usuários</a></li>
-                <li><a href="menu_adm_cliente.php">Clientes</a></li>
-                <li class="active"><a href="../index.php"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li><a href="reservas/reserva_analise_lista.php">Em Análise</a></li>
+                <li><a href="reservas/reserva_confirmada.php">Confirmadas</a></li>
+                <li><a href="reservas/reserva_cancelada.php">Cancelada</a></li>
+                <li><a href="index.php">Admin</a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span></a></li>                
             </ul>
         </div> <!-- Fecha nav a direita-->

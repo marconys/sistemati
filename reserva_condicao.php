@@ -13,8 +13,8 @@ include('./conexoes/conexao.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> <?php echo SYS_NAME; ?> - Reservas</title>
-    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="./css/meu_estilo.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/meu_estilo.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -70,7 +70,7 @@ include('./conexoes/conexao.php');
                     <div class="btn btn-group btn-group-justified" role="group">
                         <!-- Botão RESERVE JÁ! -->
                         <div class="btn-group">
-                            <a href="client/cadastrar_cliente.php">
+                            <a href="cadastro_e_reserva.php">
                                 <button class="btn btn-primary">
                                     RESERVE JÁ!
                                 </button>

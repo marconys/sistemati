@@ -101,7 +101,7 @@ if ($_POST) {
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
                                         </span>
-                                        <input type="text" name="login_usuario" id="login_usuario" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu login.">
+                                        <input type="text" name="login_usuario" id="login_usuario" class="form-control" autofocus required autocomplete="off" placeholder="E-mail ou Usuário.">
                                     </p>
                                     <label for="senha_usuario">Senha:</label>
                                     <p class="input-group">

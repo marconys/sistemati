@@ -75,7 +75,7 @@ $linha_fk = $lista_fk->fetch_assoc();
                         <form action="usuarios_insere.php" method="post" id="form_usuarios_insere" name="form_usuarios_insere" enctype="multipart/form-data">
                             <!--Inserir o campo id_produto oculto para uso no filtro -->
                             <input type="hidden" name="id_usuario" id="id_usuario">
-                            <!-- Select id_tipo_produto -->
+                            <!-- Select id_nivel_usuario -->
                             <label for="id_tipo_produto">Nível:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
