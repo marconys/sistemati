@@ -13,6 +13,8 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 //confere se realmente esta recebendo os dados
 //var_dump($dados);
+try{
+
 
 //Verifica se o usuário clicou no botão
 if(!empty($dados['enviar'])){
@@ -49,19 +51,17 @@ if(!empty($dados['enviar'])){
     $cad_reserva->execute();
 
     //Criar variavel global para  salvar  a mensagem de sucesso
-    $_SESSION['msg'] = "<p style='color:green;'> Usuário cadastrado com sucesso</p>";
+    $_SESSION['msg'] = "<p style='color:green;'> Usuário cadastrado com sucesso!<br>Use o seu e-mail, CPF e senha para fazer login!</p>";
 
     //Redireciona a págia
 
-    header("location: ../cadastro_e_reserva.php");
+    header("location: ../cadastro_e_reserva.php");    
+}
 
-    
-}else{
+} catch(Exception){
+    //Redireciona a págia
+    header('location: ../cadastro_e_reserva.php');
     //Criar variavel global para  salvar  a mensagem de erro
-    $_SESSION['msg'] = "<p style='color:#f00;'> Erro: Não foi possível cadastrar o usuário</p>";
-
-    //Redireciona a págia
-
-    header("location: ../cadastro_e_reserva.php");
+    $_SESSION['msg'] = "<p style='color:#f00;'> Erro: Ops!! Parece que o e-mail ou CPF já estão cadastrados!</p>";
 }
 ?>

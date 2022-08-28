@@ -4,9 +4,9 @@ include('../admin/acesso_com.php');
 //Incluindo conexão com o banco de dados
 include('../conexoes/conexao.php');
 
-$id_prod = $_GET['id_reserva'];
+$id_res = $_GET['id_reserva'];
 //Removendo usando o método acumulador (vai que precisa outra hora)
-$query = "update tbreserva set status_reserva = 'Inativa', parecer_reserva = 'Cancelado Pelo cliente' where id_reserva = $id_prod;";
+$query = "update tbreserva set status_reserva = 'Inativa', parecer_reserva = 'Cancelado Pelo cliente' where id_reserva = $id_res;";
 $resultado = $conexao->query($query);
 
 if(mysqli_insert_id($conexao)){

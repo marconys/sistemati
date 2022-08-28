@@ -8,7 +8,6 @@ if ($_POST) {
 
     //Reber os dados do formulário
     //organizar os campos na mesma ordem
-    $id_reserva = $_GET['id_reserva'];
     $numero_mesa_reserva = $_POST['numero_mesa_reserva'];
     $valor_reserva = $_POST['valor_reserva'];
     $status_reserva = $_POST['status_reserva'];
@@ -43,7 +42,7 @@ $lista = $conexao->query($query_busca);
 $linha = $lista->fetch_assoc();
 $totalLinhas = $lista->num_rows;
 
-$consulta_fk = "select * from tbcliente order by email_cliente asc";
+$consulta_fk = "select * from tbcliente order by id_cliente asc";
 
 $lista_fk = $conexao->query($consulta_fk);
 $linha_fk = $lista_fk->fetch_assoc();
@@ -99,7 +98,6 @@ $totalLinha_fk = $lista_fk->num_rows;
                             <br>
                             <br>
                             <!-- radio status_reserva -->
-
                             <label for="status_reserva">Deseja Reativar?</label>
                             <div class="input-group">
 

@@ -30,8 +30,8 @@
                 </li>
                 <li class="active"><a href="index.php">Home</a></li>
                 <li><a href="reservas/reserva_analise_lista.php">Em Análise</a></li>
-                <li><a href="reservas/reserva_confirmada.php">Confirmadas</a></li>
-                <li><a href="reservas/reserva_cancelada.php">Cancelada</a></li>
+                <li><a href="reservas/reserva_confirmada_lista.php">Confirmadas</a></li>
+                <li><a href="reservas/reserva_cancelada_lista.php">Cancelada</a></li>
                 <li><a href="index.php">Admin</a></li>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span></a></li>                
             </ul>

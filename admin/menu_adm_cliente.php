@@ -73,7 +73,7 @@ include('acesso_com.php');
             <div class="btn btn-group btn-group-justified" role="group">
                <!-- botão Listar -->
                 <div class="btn-group">
-                   <a href="reservas/reserva_confirmada.php">
+                   <a href="reservas/reserva_confirmada_lista.php">
                        <button class="btn btn-success">
                             Listar
                         </button>
@@ -106,7 +106,7 @@ include('acesso_com.php');
             <div class="btn btn-group btn-group-justified" role="group">
                <!-- botão Listar -->
                 <div class="btn-group">
-                   <a href="reservas/reserva_cancelada.php">
+                   <a href="reservas/reserva_cancelada_lista.php">
                        <button class="btn btn-danger">
                             Listar
                         </button>

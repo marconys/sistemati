@@ -39,8 +39,8 @@ if ($_POST) {
     
         $login_cliente = $_POST['login_usuario'];
         $senha_cliente = $_POST['senha_usuario'];
-    
-        $verificaSQL = "select * from tbcliente where email_cliente = '$login_cliente' and senha_cliente = '$senha_cliente'";
+        $cpf_cliente = $_POST['cpf_cliente'];
+        $verificaSQL = "select * from tbcliente where email_cliente = '$login_cliente' and senha_cliente = '$senha_cliente' and cpf_cliente = '$cpf_cliente'";
     
         // carregar os dados e verificar a linha de retorno, caso exista.
         $lista_session = mysqli_query($conexao, $verificaSQL);
@@ -102,6 +102,13 @@ if ($_POST) {
                                             <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
                                         </span>
                                         <input type="text" name="login_usuario" id="login_usuario" class="form-control" autofocus required autocomplete="off" placeholder="E-mail ou Usuário.">
+                                    </p>
+                                    <label for="cpf_cliente">CPF:</label>
+                                    <p class="input-group">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
+                                        </span>
+                                        <input type="text" name="cpf_cliente" id="cpf_cliente" class="form-control" maxlength="11" autofocus autocomplete="off" placeholder="CPF sem pontos e traços.">
                                     </p>
                                     <label for="senha_usuario">Senha:</label>
                                     <p class="input-group">

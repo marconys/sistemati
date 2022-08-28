@@ -52,7 +52,10 @@ $totalLinhas = $lista->num_rows;
     <main class="container">
         <h1 class="breadcrump alert-danger glyphicon glyphicon-list-alt">Minhas Reservas</h1>
         <table class="table table-condensed table-hover tbopacidade" style="background-color: #e4b9b9;">
-            
+            <!-- Verifica se existe reservas em analise -->
+        <?php if($linha == 0){
+                echo "<div><h1 class='breadcrump alert-danger'>Você não possui reservas!</h1></div>";
+            }else { ?>
             <thead>
                 <th>ID RESERVA</th>                
                 <th>DATA</th>
@@ -105,7 +108,7 @@ $totalLinhas = $lista->num_rows;
                             </button>
                         </td>
                     </tr> <!-- Final da linha da tabela -->
-                <?php } while ($linha = $lista->fetch_assoc()); ?>
+                <?php } while ($linha = $lista->fetch_assoc());} ?>
             </tboby> <!-- Final do corpo da tabela -->
 
         </table>

@@ -2,14 +2,14 @@
  -- use sistemaDB;
 -- estrutura da tabela de produtos
 create table tbprodutos(
-id_produto int(11) not null,
+id_produto int(11) primary key auto_increment not null,
 id_tipo_produto int  not null,
 descri_produto varchar(100) not null,
 resumo_produto varchar(1000) default null,
 valor_produto decimal(10,2) default null,
 imagem_produto varchar(50) default null,
 destaque_produto enum('Sim', 'Não') not null,
-disponivel_produto enum('Sim', 'Não') not null
+disponivel_produto enum('Sim', 'Não') null default 'Não'
 )engine=InnoDB default charset=utf8;
 
 -- Inserindo dados da tabela `tbprodutos`
@@ -28,17 +28,17 @@ INSERT INTO `tbprodutos` (`id_produto`, `id_tipo_produto`, `descri_produto`, `re
 -- estrutura da tabela tbtipos
 
 create table tbtipos(
-id_tipo int(11) not null,
+id_tipo int(11) primary key auto_increment not null,
 sigla_tipo varchar(3) not null,
 rotulo_tipo varchar(15) not null,
-quantidade_tipo decimal(10,2) not null
+disponivel_tipo enum('Sim', 'Não') null default 'Não'
 )engine=InnoDB default charset=utf8;
 
 -- Inserindo dados da tabela `tbtipos`
-INSERT INTO `tbtipos` (`id_tipo`, `sigla_tipo`, `rotulo_tipo`,`quantidade_tipo`) VALUES
-(1, 'chu', 'Churrasco', '20000'),
-(2, 'sob', 'Sobremesa', '200'),
-(3, 'beb', 'Bebidas', '0');
+INSERT INTO `tbtipos` (`id_tipo`, `sigla_tipo`, `rotulo_tipo`,`disponivel_tipo`) VALUES
+(1, 'chu', 'Churrasco', 'Sim'),
+(2, 'sob', 'Sobremesa', 'Sim'),
+(3, 'beb', 'Bebidas', 'Não');
 
 -- estrutura da tabela tbusuários
 
@@ -93,26 +93,20 @@ id_reserva int(11) primary key auto_increment not null,
 id_cliente_reserva int(11) not null,
 data_reserva date not null,
 hora_reserva time not null,
-numero_mesa_reserva int (11) not null,
+numero_mesa_reserva int (11) null,
 numero_pessoas_reserva int (11) not null,
 motivo_reserva varchar(100) null,
-motivo_recusa varchar(100) null,
-valor_reserva decimal(10,2) not null,
-status_reserva varchar(20) null
+valor_reserva decimal(10,2) null default 59.90,
+status_reserva varchar(20) null default 'Em análise',
+parecer_reserva varchar(100) null
 
 )engine=InnoDB default charset=utf8;
 
 -- Inserindo dados da tabela `tbreserva`
 
-insert into tbreserva(id_reserva, id_cliente_reserva, data_reserva, hora_reserva, numero_mesa_reserva, 
-numero_pessoas_reserva, motivo_reserva, motivo_recusa, valor_reserva, status_reserva)
-values (9,6,"2022-09-10", "19:00:00", 20, 7, "Confraternização", "" ,59.90, "Confirmada"),
-(8,1,"2022-10-09", "19:00:00", 20, 7, "Aniversário", "" ,59.90, default);
-
--- índices da tabela tbtipos
-
-alter table tbtipos
-add primary key(id_tipo);
+/*insert into tbreserva(id_reserva, id_cliente_reserva, data_reserva, hora_reserva, numero_mesa_reserva, 
+numero_pessoas_reserva, motivo_reserva, valor_reserva, status_reserva, parecer_reserva)
+values (default,1,"2022-10-09", "19:00:00", 20, 7, "Aniversário" ,default, default, default); */
 
 -- restrição (constraint) da tabela produtos
 alter table tbprodutos 
@@ -167,7 +161,7 @@ r.valor_reserva,
 r.status_reserva,
 c.nome_cliente
 from tbreserva r
-INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente and  r.status_reserva = 'Aprovado' or r.status_reserva = 'Em análise';
+INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente and  r.status_reserva = 'Confirmada' or r.status_reserva = 'Em análise';
 
 -- Extraindo dados da tabela tusuarios 
 select all u.id_usuario,

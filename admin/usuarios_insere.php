@@ -76,7 +76,7 @@ $linha_fk = $lista_fk->fetch_assoc();
                             <!--Inserir o campo id_produto oculto para uso no filtro -->
                             <input type="hidden" name="id_usuario" id="id_usuario">
                             <!-- Select id_nivel_usuario -->
-                            <label for="id_tipo_produto">Nível:</label>
+                            <label for="id_nivel_usuario">Nível:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
