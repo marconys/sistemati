@@ -57,6 +57,7 @@ if ($_POST) {
             $_SESSION['login_usuario'] = $login_cliente;
             $_SESSION['nivel_usuario'] = $linha['nivel_usuario'];
             $_SESSION['nome_da_sessao'] = session_name();
+            $_SESSION['id_cliente'] = $linha['id_cliente'];
             echo "<script>window.open('../client/index.php','_self')</script>";
         }else {
             echo "<script>window.open('invasor.php','_self')</script>";
@@ -106,7 +107,7 @@ if ($_POST) {
                                     <label for="cpf_cliente">CPF:</label>
                                     <p class="input-group">
                                         <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-credit-card text-info" aria-hidden="true"></span>
                                         </span>
                                         <input type="text" name="cpf_cliente" id="cpf_cliente" class="form-control" maxlength="11" autofocus autocomplete="off" placeholder="CPF sem pontos e traços.">
                                     </p>

@@ -48,7 +48,8 @@ if(!empty($dados['enviar'])){
     $cad_reserva->bindParam(':motivo_reserva',$dados['motivo_reserva'], PDO::PARAM_STR);
     $cad_reserva->bindParam(':id_cliente_reserva',$id_cliente, PDO::PARAM_INT);
     //executa a query
-    $cad_reserva->execute();
+    $cad_reserva->execute();     
+    
 
     //Criar variavel global para  salvar  a mensagem de sucesso
     $_SESSION['msg'] = "<p style='color:green;'> Usuário cadastrado com sucesso!<br>Use o seu e-mail, CPF e senha para fazer login!</p>";

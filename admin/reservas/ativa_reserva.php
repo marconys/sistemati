@@ -87,16 +87,6 @@ $totalLinha_fk = $lista_fk->num_rows;
                                 <input class="form-control" type="number" name="id_reserva" id="id_reserva" value="<?php echo $linha['id_reserva']; ?>" readonly>
                             </div>
                             <br>
-                            <!-- Text email_cliente -->
-                            <label for="email_cliente">EMAIL CLIENTE:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" class="form-control" id="email_cliente" name="email_cliente" value="<?php echo $linha_fk['email_cliente']; ?>">
-                            </div>
-                            <br>
-                            <br>
                             <!-- radio status_reserva -->
                             <label for="status_reserva">Deseja Reativar?</label>
                             <div class="input-group">

@@ -100,7 +100,7 @@ include('config.php')?>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                                 </span>
-                                <input type="date" class="form-control" id="data_reserva" name="data_reserva" required>
+                                <input type="date" class="form-control" id="data_reserva" name="data_reserva" required >
                             </div>
                             <br>
                             <label for="hora_reserva">QUAL O HORÁRIO DA RESERVA?</label>
@@ -117,7 +117,18 @@ include('config.php')?>
                                     <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
                                 </span>
                                 <input type="number" class="form-control" id="numero_pessoas_reserva" name="numero_pessoas_reserva" min="1" step="1" required>
+                            </div> 
+                            <br>                           
+
+                             <!-- valor_reserva-->
+                             <label class="" for="valor_reserva">VALOR R$:</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                                </span>
+                                <input type="number" class="form-control" id="valor_reserva" name="valor_reserva" value="59.90" readonly>
                             </div>
+                            <br>
                             <br>
                             <label for="motivo_reserva">MOTIVO ESPECIAL?</label>
                             <div class="input-group">

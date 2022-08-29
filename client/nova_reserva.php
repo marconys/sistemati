@@ -4,25 +4,26 @@
     include('../admin/acesso_com.php'); //Importante!!!!!!!!!!!! Autentica o usuário
     include('../conexoes/conexao.php');    
 
-    $email = $_SESSION['login_usuario'];
-
+$id_cliente = $_SESSION['id_cliente'];
     if ($_POST) {
 
         //Reber os dados do formulário
         //organizar os campos na mesma ordem
-        $id_cliente_reserva = $_POST['id_cliente_reserva'];
+        
         $data_reserva = $_POST['data_reserva'];
         $hora_reserva = $_POST['hora_reserva'];
         $numero_pessoas = $_POST['numero_pessoas_reserva'];
-        $nome_cliente = $_POST['nome_cliente'];
         $motivo_reserva = $_POST['motivo_reserva'];
+        $id_cliente_reserva = $id_cliente;
 
         
-        $campos_insert = "id_cliente_reserva,data_reserva,hora_reserva,numero_pessoas_reserva,nome_cliente,motivo_reserva";
-        $values = "$id_cliente_reserva,'$data_reserva','$hora_reserva',$numero_pessoas,'$nome_cliente','$motivo_reserva'";
+        $campos_insert = "id_cliente_reserva, data_reserva,hora_reserva,numero_pessoas_reserva,motivo_reserva";
+        $values = "$id_cliente_reserva,'$data_reserva','$hora_reserva',$numero_pessoas,'$motivo_reserva'";
         
         $query = "insert into tbreserva ($campos_insert) values ($values);";
         $resultado = $conexao->query($query);
+
+        
 
      // var_dump($$query);
 
@@ -40,7 +41,7 @@
 //Chave estrangeira tipo
 
 
-$query_cliente = "select * from tbcliente where email_cliente = '$email'";
+$query_cliente = "select * from tbcliente where email_cliente ";
 $lista_fk = $conexao->query($query_cliente);
 $linha_fk = $lista_fk->fetch_assoc();
 ?>
@@ -75,26 +76,7 @@ $linha_fk = $lista_fk->fetch_assoc();
                     <div class="alert alert-success" role="alert">
                         <form action="nova_reserva.php" method="post" id="form_nova_reserva" name="form_nova_reserva" enctype="multipart/form-data">
                             <!--Inserir o campo id_reserva oculto para uso no filtro -->
-                            <input type="hidden" name="id_reserva" id="id_reserva">
-                            <!--Inserir o campo id_cliente_reserva oculto -->
-                            <input type="hidden" name="id_cliente_reserva" id="id_cliente_reserva" value="<?php echo $linha_fk['id_cliente'];?>">
-                            <!-- Select id_cliente_reserva -->
-                            <label for="email_cliente">USUÁRIO</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" class="form-control" id="email_cliente" name="email_cliente" value="<?php echo $_SESSION['login_usuario'];?>" maxlength="100" required readonly>
-                            </div>
-                            <br>
-                            <label for="nome_cliente">NOME:</label>                            
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" maxlength="100" required  placeholder="Digite o nome do titular da reserva">
-                            </div>
-                            <br>
+                            <input type="hidden" name="id_reserva" id="id_reserva">                            
                             <label for="data_reserva">QUAL A DATA DA RESERVA?</label>
                             <div class="input-group">
                                 <span class="input-group-addon">

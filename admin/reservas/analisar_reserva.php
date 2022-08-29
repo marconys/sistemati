@@ -43,7 +43,10 @@ $lista = $conexao->query($query_busca);
 $linha = $lista->fetch_assoc();
 $totalLinhas = $lista->num_rows;
 
-$consulta_fk = "select * from tbcliente order by id_cliente asc";
+$consulta_fk = "select c.id_cliente,
+c.nome_cliente,
+C.email_cliente from tbcliente c
+inner join tbreserva on id_cliente_reserva = id_cliente";
 
 $lista_fk = $conexao->query($consulta_fk);
 $linha_fk = $lista_fk->fetch_assoc();
@@ -52,6 +55,7 @@ $totalLinha_fk = $lista_fk->num_rows;
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -87,16 +91,6 @@ $totalLinha_fk = $lista_fk->num_rows;
                                 </span>
                                 <input class="form-control" type="number" name="id_reserva" id="id_reserva" value="<?php echo $linha['id_reserva']; ?>" readonly>
                             </div>
-                            <br>
-                            <!-- Text email_cliente -->
-                            <label for="email_cliente">EMAIL CLIENTE:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                </span>
-                                <input type="text" class="form-control" id="email_cliente" name="email_cliente" value="<?php echo $linha_fk['email_cliente']; ?>">
-                            </div>
-                            <br>
                             <br>
                             <!-- radio status_reserva -->
 
