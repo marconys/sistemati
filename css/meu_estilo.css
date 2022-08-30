@@ -19,11 +19,18 @@
     align-items:center;
 }
 
-.oferta .titulo{
+.esconder{
+    display: none;
+}
+
+.mostrar{
+    display: block;
+}
+
+.oferta {
     width: 450px;
     right: 200px;
     text-align: center;
-    margin-right: 20%;
     font-family: Ultra;
     font-weight: 400;
     color: red;
@@ -32,10 +39,20 @@
 .titulo{
     width: 450px;
     right: 200px;
-    text-align: center;
+    text-align: center;    
+    margin-right: 18%;
     font-family: Ultra;
     font-weight: 400;
     color: red;
+}
+
+.titulo2{
+    width: 450px;
+    right: 200px;
+    text-align: center;
+    align-items: center;
+    font-family: Ultra;
+    color: #000;
 }
 
 

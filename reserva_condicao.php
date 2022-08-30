@@ -57,14 +57,13 @@ include('./conexoes/conexao.php');
                 </h2>
                 <div class="thumbnail">
                     <div class="breadcrumb tex-danger">
-                        <h2 class="titulo titulo-oferta">POR APENAS 50,90</h2>
-                        <h3>Faça uma reserva com mais de 5 pessoas e garanta
-                            70% de desconto no rodízio para o titular da Reserva,e mais 10%
-                            de desconto em todas as bebidas da comada da mesa associada a reserva
-                        </h3>
-                        <h4>As reservas são permitidas com um prazo mínimo de 12 horas de antecedência
-                            e no máximo 60 dias.
+                        <h2 class="titulo">R$ RODÍZO 99,90</h2>
+                        <h4>Em reservas para mais de 5 pessoas, o titular da reserva paga apenas <strong>29,90</strong> no rodízio, e ganha mais 10%
+                            de desconto em todas as bebidas nas comadas associadas a mesa da reserva!
                         </h4>
+                        <h5>As reservas são permitidas com um prazo mínimo de 12 horas de antecedência
+                            e no máximo 60 dias.
+                        </h5>
                     </div>
                     <!-- Botão RESERVE JÁ! -->
                     <div class="btn btn-group btn-group-justified" role="group">

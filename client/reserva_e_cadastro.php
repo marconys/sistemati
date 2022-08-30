@@ -11,6 +11,7 @@ include('../conexoes/conexao2.php');
 //atribui os campos recebidos a uma váriavél
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
+
 //confere se realmente esta recebendo os dados
 //var_dump($dados);
 try{
@@ -18,6 +19,13 @@ try{
 
 //Verifica se o usuário clicou no botão
 if(!empty($dados['enviar'])){
+    //Verifica a quantidade de pessoas para aplicar o valor promocional
+    if($dados['numero_pessoas_reserva'] >= 5){
+        $valor_reserva = 29.90;
+    }else{
+        $valor_reserva = 99.90;
+    }
+
     //inseridodados na tabela tbcliente
     $query_cliente =  "INSERT INTO tbcliente (nome_cliente, cpf_cliente, email_cliente, senha_cliente) 
     VALUES (:nome_cliente, :cpf_cliente, :email_cliente, :senha_cliente )";
@@ -37,8 +45,8 @@ if(!empty($dados['enviar'])){
     $id_cliente = $conexao2->lastInsertId();
 
     //inseridodados na tabela tbcliente
-    $query_reserva =  "INSERT INTO tbreserva (data_reserva, hora_reserva, numero_pessoas_reserva, motivo_reserva, id_cliente_reserva) 
-    VALUES (:data_reserva, :hora_reserva, :numero_pessoas_reserva, :motivo_reserva, :id_cliente_reserva)";
+    $query_reserva =  "INSERT INTO tbreserva (data_reserva, hora_reserva, numero_pessoas_reserva, motivo_reserva, id_cliente_reserva, valor_reserva) 
+    VALUES (:data_reserva, :hora_reserva, :numero_pessoas_reserva, :motivo_reserva, :id_cliente_reserva, $valor_reserva)";
     //Prepara a query e atribui a variavel $cad_reserva
     $cad_reserva = $conexao2->prepare($query_reserva);
     //Substitui o link pelos valores armazenados na variavel $dados

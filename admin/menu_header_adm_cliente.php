@@ -33,6 +33,19 @@
                 <li><a href="reservas/reserva_confirmada_lista.php">Confirmadas</a></li>
                 <li><a href="reservas/reserva_cancelada_lista.php">Cancelada</a></li>
                 <li><a href="index.php">Admin</a></li>
+                <!-- Formulário de busca -->
+                <form action="reservas/reservas_busca.php" method="get" name="form_busca" id="form_busca" class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Busca reserva" name="buscar_reserva" id="buscar_reserva" size="9" required>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div> <!-- Fecha input-group -->
+                    </form>
                 <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span></a></li>                
             </ul>
         </div> <!-- Fecha nav a direita-->

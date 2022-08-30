@@ -1,38 +1,10 @@
-<?php
-//Incluindo variaveis do sistema
-include ('../../config.php');
-
-//Incluindo o sistema de autenticação
-include('../acesso_com.php');
-
-//Incluindo o Arquivo de conexão
+<?php 
+//inclui conexão com o banco
 include('../../conexoes/conexao.php');
-
-//Selecionando os dados e ordenando por ordem alfabetica
-$consulta = "select r.id_reserva,
-r.data_reserva,
-r.hora_reserva,
-r.motivo_reserva,
-r.numero_pessoas_reserva,
-r.numero_mesa_reserva,
-r.valor_reserva,
-r.status_reserva,
-r.parecer_reserva,
-C.email_cliente,
-c.nome_cliente
-from tbreserva r
-INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente   
-and r.status_reserva = 'Confirmada'";
-
-//Buscar a lista completa de tipos
-$lista = $conexao->query($consulta);
-
-//Separar tipos por linha
-$linha = $lista->fetch_assoc();
-
-//Contar numero de linhas da lista
-$totalLinhas = $lista->num_rows;
-
+//inclui variavel de ambiente
+include('../../config.php');
+//inclui acesso
+include('../acesso_com.php');
 ?>
 
 <!DOCTYPE html>
@@ -49,11 +21,12 @@ $totalLinhas = $lista->num_rows;
 <body class="fundofixo">
     <?php include('index.php');?>
     <main class="container">
-        <h1 class="breadcrump alert-success glyphicon glyphicon-ok">Reservas Confirmadas</h1>
-        <table class="table table-condensed table-hover tbopacidade" style="background-color: #108c00;">
-            <!-- Verifica se existe reservas em analise -->
-        <?php if($linha == 0){
-                echo "<div><h1 class='breadcrump alert-success'>Você não possui reservas para cancelar!</h1></div>";
+        <h1 class="breadcrump alert-danger glyphicon glyphicon-list-alt">Buascar Reservas</h1>
+        <table class="table table-condensed table-hover tbopacidade" style="background-color: #ff7f73;">
+            
+          <!-- Verifica se existe reservas em analise -->
+          <?php if($linha == 0){
+                echo "<div><h1 class='breadcrump alert-danger'>Nenum resultado encontrado para!</h1></div>";
             }else { ?>
             <thead>
                 <th>ID RESERVA</th>                
@@ -85,13 +58,9 @@ $totalLinhas = $lista->num_rows;
                         <td><?php echo $linha['hora_reserva']; ?></td>
                         <td>
                             <?php
-                            if ($linha['status_reserva'] == "Negado" || $linha['status_reserva'] == 'Inativa') {
-                                echo ("<span class='glyphicon glyphicon-remove text-warning aria-hidden='true'></span>");
-                            } else if($linha['status_reserva'] == "Em análise"){
-                                echo ("<span class='glyphicon glyphicon-time text-warning aria-hidden='true'></span>");
-                            } else{
-                                echo ("<span class='glyphicon glyphicon-ok text-success aria-hidden='true'></span>");
-                            }
+                            if ($linha['status_reserva'] == 'Inativa' || $linha['status_reserva'] == 'Espirada') {
+                                echo ("<span class='glyphicon glyphicon-remove text-danger aria-hidden='true'></span>");
+                            } 
                             ?>
                             <?php echo $linha['status_reserva']; ?>                           
                         </td> 
@@ -104,13 +73,9 @@ $totalLinhas = $lista->num_rows;
                         
 
                         <td>
-                            <a href="cancela_reserva.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-danger largButton btn-xs">
-                                <span class="hidden-xs">Cancelar</span>
-                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-                            </a>
-                            <a href="reserva_conf_envia.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-info largButton btn-xs">
-                                <span class="hidden-xs">Enviar</span>
-                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            <a href="ativa_reserva.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-success largButton btn-xs">
+                                <span class="hidden-xs">Reativar</span>
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                             </a>
                         </td>
                     </tr> <!-- Final da linha da tabela -->
