@@ -1,39 +1,57 @@
 <?php
-    //Incluindo variáveis de ambiente, acesso e banco
-    include('../config.php');
-    include('../admin/acesso_com.php'); //Importante!!!!!!!!!!!! Autentica o usuário
-    include('../conexoes/conexao.php');    
+session_start(); //Inicia sessão
+//Incluindo variáveis de ambiente, acesso e banco
+include('../config.php');
+include('../admin/acesso_com.php'); //Importante!!!!!!!!!!!! Autentica o usuário
+include('../conexoes/conexao.php');
 
 $id_cliente = $_SESSION['id_cliente'];
-    if ($_POST) {
+    
+if ($_POST){
+                    //Reber os dados do formulário
+                    //organizar os campos na mesma ordem
 
-        //Reber os dados do formulário
-        //organizar os campos na mesma ordem
+                    $data_reserva = $_POST['data_reserva'];
+                    $hora_reserva = $_POST['hora_reserva'];
+                    $numero_pessoas = $_POST['numero_pessoas_reserva'];
+                    $motivo_reserva = $_POST['motivo_reserva'];
+                    $id_cliente_reserva = $id_cliente;
+
+                    //Calcula a diferença de dias entre a data atual e a data da reserva                
+                    $data_atual = new DateTime('now');
+                    $data_res  = new DateTime($data_reserva);
+                    $dataInterval = $data_atual->diff($data_res);
+                    $dataInterval->days;
+
+                    //Verifica se o prazo da reserva atende o mínimo de 12 e máximo de  60 dias
+                if ($dataInterval < 12) {
+                    $_SESSION['msgres'] = "<p style='color:#f00;'> O prazo mínimo de antecedência é de 12 dias!</p>";
+                    header('location: nova_reserva.php');
+                }else if($dataInterval > 60){
+                    $_SESSION['msgres'] = "<p style='color:#f00;'> O prazo máximo de antecedência é de 60 dias!</p>";
+                    header('location: nova_reserva.php');
+                }else{
+                    $campos_insert = "id_cliente_reserva, data_reserva,hora_reserva,numero_pessoas_reserva,motivo_reserva";
+                    $values = "$id_cliente_reserva,'$data_reserva','$hora_reserva',$numero_pessoas,'$motivo_reserva'";
+
+                    $query = "insert into tbreserva ($campos_insert) values ($values);";
+                    $resultado = $conexao->query($query);
+
+
+
+                    // var_dump($$query);
+
+                    //Após o insert direciona a pagina
+                    if (mysqli_insert_id($conexao)) {
+                        $_SESSION['msgres'] = "<p style='color:green;'> Reserva Realizada com sucesso!</p>";  
+                        header("location: minha_reserva.php");
+                    } else {
+                        $_SESSION['msgres'] = "<p style='color:#f00;'> Não foi possível conectar!</p>";
+                        header("location: nova_reserva.php");
+                    }
+                }
+    
         
-        $data_reserva = $_POST['data_reserva'];
-        $hora_reserva = $_POST['hora_reserva'];
-        $numero_pessoas = $_POST['numero_pessoas_reserva'];
-        $motivo_reserva = $_POST['motivo_reserva'];
-        $id_cliente_reserva = $id_cliente;
-
-        
-        $campos_insert = "id_cliente_reserva, data_reserva,hora_reserva,numero_pessoas_reserva,motivo_reserva";
-        $values = "$id_cliente_reserva,'$data_reserva','$hora_reserva',$numero_pessoas,'$motivo_reserva'";
-        
-        $query = "insert into tbreserva ($campos_insert) values ($values);";
-        $resultado = $conexao->query($query);
-
-        
-
-     // var_dump($$query);
-
-    //Após o insert direciona a pagina
-   if(mysqli_insert_id($conexao)){
-        header("location: minha_reserva.php");
-    }else{
-        header("location: nova_reserva.php");
-    } 
-
     
 }
 
@@ -70,13 +88,20 @@ $linha_fk = $lista_fk->fetch_assoc();
                         </button>
                     </a>
                     Realizando Nova Reserva
+                    <?php
+                    if (isset($_SESSION['msgres'])) {
+                        echo $_SESSION['msgres'];
+                        //Após imprimir destroi a variavel para não imprimir novamente
+                        unset($_SESSION['msgres']);
+                    }
+                    ?>
                 </h2>
                 <div class="thumbnail">
                     <!-- Abre thumbnail -->
                     <div class="alert alert-success" role="alert">
                         <form action="nova_reserva.php" method="post" id="form_nova_reserva" name="form_nova_reserva" enctype="multipart/form-data">
                             <!--Inserir o campo id_reserva oculto para uso no filtro -->
-                            <input type="hidden" name="id_reserva" id="id_reserva">                            
+                            <input type="hidden" name="id_reserva" id="id_reserva">
                             <label for="data_reserva">QUAL A DATA DA RESERVA?</label>
                             <div class="input-group">
                                 <span class="input-group-addon">

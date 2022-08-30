@@ -1,18 +1,21 @@
+RF cli
+
 banner para visualizar oferta de reserva - um item de menu azul chamado "Pedido de Reserva" que direciona a uma outra pagina que detalha a politica de reserva
 
-regras
+regras de negocio
 minimo de 12 horas de antecedência e no máximo 60 dias
 apenas um pedido de reserva por dia para o mesmo cpf
 
+RF cli
 campos de cadastro e reserva, o cliente deve informar data escolhida, horário e numero de pessoas além de um possível motivo especial como por exemplo: Casamento, anoversário, confraternização. este ultimo campo não é obrigatório.
 
 acesso
 
 o cliente usará o cpf, e-mail e uma senha para acessar o sistema de reservas.
-
+RF cli
 funcionalidade do sistema de reservas para o cliente
 as reservas realizadas podem ser canceladas pelo cliente, mas não removidas do banco de dados, pois poderem ser utilizadas para promoções futuras.
-
+RF cli
 funcionalidade do sistema de reservas para o admin
 O administrador do sistema deve listar, para confirmar ou negar, mas não podem excluir as reservas. Ao confirmar o adm inclui o número da mesa reservada, porém essa informação do número da mesa não deve ser visível para o cliente,
 

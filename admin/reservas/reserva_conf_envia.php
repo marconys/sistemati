@@ -1,3 +1,19 @@
+<?php 
+//Incluindo variáveis de ambiente, acesso e banco
+include('../../config.php');
+include('../acesso_com.php'); //Importante!!!!!!!!!!!! Autentica o usuário
+include('../../conexoes/conexao.php');
+
+
+
+//Consulta para recuperar dados do filtro da chamada da página...
+$id_reserva = $_GET['id_reserva'];
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,11 +42,29 @@
                 include('../../PHPMailer/PHPMailer.php');
                 include('../../PHPMailer/SMTP.php');
 
+                
+                $consulta = "select r.id_cliente_reserva,
+                r.data_reserva,
+                r.hora_reserva,
+                r.numero_pessoas_reserva,
+                r.valor_reserva,
+                r.status_reserva,
+                C.email_cliente,
+                c.nome_cliente
+                from tbreserva r
+                INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente   
+                and r.id_reserva = '$id_reserva'";
+                $lista = $conexao->query($consulta);
+                $linha = $lista->fetch_assoc();
+                $totalLinhas = $lista->num_rows;
 
-                $nome_contato = $_POST['nome_contato'];
-                $email_contato = $_POST['email_contato'];
-                $comentarios_contato =$_POST['comentarios_contato'];
-                $file_contato = $_FILES['file_contato'];
+                $nome = $linha['nome_cliente'];
+                $email_cliente = $linha['email_cliente'];
+                $valor = $linha['valor_reserva'];
+                $data = $linha['data_reserva'];
+                $hora = $linha['hora_reserva'];
+                $status = $linha['status_reserva'];
+                $num_pessoas = $linha['numero_pessoas_reserva'];
 
 
 
@@ -48,27 +82,20 @@
                 $email->SMTPSecure = "tls";
                 $email->SMTPAuth = "true";
                 $email->Username = "marconyspinheiro@yahoo.com.br";
-                $email->Password = "";
+                $email->Password = "ecfidptogxyfsyaq";
 
                 //Configuração da msg                
                 $email->setFrom($email->Username, "Churrasqueiro & Churrascow"); // remetente
-                $email->addAddress('marconysbatera@gmail.com'); // destinatário
+                $email->addAddress($email_cliente); // destinatário
                 $email->Subject = "Churrascow? Fale Conosco";
                 
                 //Verifica se há anexos
-                if (
-                    isset($_FILES['file_contato']) &&
-                    $_FILES['file_contato']['error'] == UPLOAD_ERR_OK
-                ) {
-                    $email->AddAttachment(
-                        $_FILES['file_contato']['tmp_name'],
-                        $_FILES['file_contato']['name']
-                    );
-                }
 
 
-                $body_email = "Você recebeu uma menssagem de: '$nome_contato' ('$email_contato'):
-                <br><br> Menssagem: '$comentarios_contato' <br> Anexos: <br> ";
+                $body_email = "Você recebeu uma menssagem de: 'Churrascow' ('churraschurrascow.com.br'):
+                <br><br> Sua reserva para $num_pessoas na data $data horário $hora, foi $status com sucesso!<br> 
+                Você como titular da reserva recebeu um desconto de R$ 70,00. <br>  
+                Portanto pagará apenas $valor no valor do seu rodízio! <br> Anexos: <br> ";
 
                 $email->Body = $body_email;
 
