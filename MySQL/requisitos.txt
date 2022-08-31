@@ -1,14 +1,7 @@
-RF cli
 
-banner para visualizar oferta de reserva - um item de menu azul chamado "Pedido de Reserva" que direciona a uma outra pagina que detalha a politica de reserva
-
-regras de negocio
-minimo de 12 horas de antecedência e no máximo 60 dias
-apenas um pedido de reserva por dia para o mesmo cpf
 
 RF cli
-campos de cadastro e reserva, o cliente deve informar data escolhida, horário e numero de pessoas além de um possível motivo especial como por exemplo: Casamento, anoversário, confraternização. este ultimo campo não é obrigatório.
-
+campos de cadastro e reserva, o cliente deve informar 
 acesso
 
 o cliente usará o cpf, e-mail e uma senha para acessar o sistema de reservas.
@@ -25,7 +18,7 @@ caso de pedido de reserva negado, o adm registra o motivo da negativa e o client
 
 Na área administrativa de Reservas deve haver filtros para pesquisa por status, por cpf, e por data das reservas.
 
-No dia seguinte da data das reservas atendidas ou não, o sistema deve alterar o status para espirado e não lista mais como reservas ativas. Serão consideradas reservas os pedidos de reserva que forem alterados para confirmado
+
 
 tbreservas
 id_reserva int 

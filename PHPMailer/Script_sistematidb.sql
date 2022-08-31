@@ -1,5 +1,5 @@
 -- create database sistemaDB;
- -- use sistemaDB;
+-- use sistemaDB;
 -- estrutura da tabela de produtos
 create table tbprodutos(
 id_produto int(11) primary key auto_increment not null,
@@ -80,11 +80,6 @@ email_cliente varchar(32) not null unique,
 senha_cliente varchar(8) not null
 )engine=InnoDB default charset=utf8;
 
--- Inserindo dados da tabela `tbcliente`
-
-insert into `tbcliente` (`id_cliente`, `nome_cliente`, `cpf_cliente`, `email_cliente`, `senha_cliente`)
-values (6,'cliente', 12345678950, 'cliente@gmail.com', '1234');
-
 
 -- Estrutura da tabela tbreserva
 
@@ -96,17 +91,11 @@ hora_reserva time not null,
 numero_mesa_reserva int (11) null,
 numero_pessoas_reserva int (11) not null,
 motivo_reserva varchar(100) null,
-valor_reserva decimal(10,2) null default 59.90,
+valor_reserva decimal(10,2) null,
 status_reserva varchar(20) null default 'Em análise',
 parecer_reserva varchar(100) null
 
 )engine=InnoDB default charset=utf8;
-
--- Inserindo dados da tabela `tbreserva`
-
-/*insert into tbreserva(id_reserva, id_cliente_reserva, data_reserva, hora_reserva, numero_mesa_reserva, 
-numero_pessoas_reserva, motivo_reserva, valor_reserva, status_reserva, parecer_reserva)
-values (default,1,"2022-10-09", "19:00:00", 20, 7, "Aniversário" ,default, default, default); */
 
 -- restrição (constraint) da tabela produtos
 alter table tbprodutos 

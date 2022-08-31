@@ -17,15 +17,11 @@ if (isset($dados['data_reserva'])) {
     $hoje = new DateTime('now');
     $data_reserva = new DateTime($dados['data_reserva']);
     $interval = $data_reserva->diff($hoje);
-    $dias = $interval->days;
+    $dias = $interval->d;
+    $horas = $interval->h;
     }
-//Verifica se o prazo da reserva atende o mínimo de 12 e máximo de  60 dias
-if ($dias < 12 || $dias > 60) {
-    //Criar variavel global para  salvar  a mensagem de sucesso
-    $_SESSION['msg'] = "<p style='color:#f00;'> O prazo mínimo de antecedência é de 12 dias e o máxio 60 dias!</p>";
-    header('location: ../cadastro_e_reserva.php');
-
-    }else{
+//Verifica se o prazo da reserva atende o mínimo de 12 Horas e máximo de  60 dias
+if ($horas > 12 &&  $dias < 60) {
         //confere se realmente esta recebendo os dados
         //var_dump($dados);
         try{
@@ -88,5 +84,9 @@ if ($dias < 12 || $dias > 60) {
             $_SESSION['msg'] = "<p style='color:#f00;'> Erro: Ops!! Parece que o e-mail ou CPF já estão cadastrados!</p>";
         }
 
+    }else{        
+    //Criar variavel global para  salvar  a mensagem de sucesso
+    $_SESSION['msg'] = "<p style='color:#f00;'> O prazo mínimo de antecedência é de 12 horas e o máxio 60 dias!</p>";
+    header('location: ../cadastro_e_reserva.php');
     }
 ?>

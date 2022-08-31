@@ -5,6 +5,29 @@ include('../../conexoes/conexao.php');
 include('../../config.php');
 //inclui acesso
 include('../acesso_com.php');
+
+$busca = ($_GET['buscar_reserva']);
+
+$consulta = "select r.id_reserva,
+r.data_reserva,
+r.hora_reserva,
+r.motivo_reserva,
+r.numero_pessoas_reserva,
+r.numero_mesa_reserva,
+r.parecer_reserva,
+r.valor_reserva,
+r.status_reserva,
+c.nome_cliente,
+c.cpf_cliente
+from tbreserva r
+INNER JOIN tbcliente c on r.id_cliente_reserva = c.id_cliente and  r.status_reserva LIKE '%$busca%'
+or r.data_reserva LIKE '%$busca%' or c.cpf_cliente LIKE '%$busca%' ";
+
+$lista = $conexao->query($consulta);
+$linha = $lista->fetch_assoc();
+$totalLinhas = $lista->num_rows;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +52,9 @@ include('../acesso_com.php');
                 echo "<div><h1 class='breadcrump alert-danger'>Nenum resultado encontrado para!</h1></div>";
             }else { ?>
             <thead>
-                <th>ID RESERVA</th>                
-                <th>DATA</th>
+                <th>ID RESERVA</th> 
+                <th>CPF</th>               
+                <th>DATA</th>               
                 <th>HORA</th>
                 <th>STATUS DA RESERVA</th>
                 <th>MOTIVO</th>
@@ -51,6 +75,7 @@ include('../acesso_com.php');
                     <tr>
                         <!-- Linha da tabela -->
                         <td><?php echo $linha['id_reserva']; ?></td>
+                        <td><?php echo $linha['cpf_cliente']; ?></td>
                         <td class="hidden"><?php echo $linha['status_reserva']; ?></td>
                         <td>
                             <span class="hidden-xs"><?php echo $linha['data_reserva'];?></span>
@@ -60,7 +85,11 @@ include('../acesso_com.php');
                             <?php
                             if ($linha['status_reserva'] == 'Inativa' || $linha['status_reserva'] == 'Espirada') {
                                 echo ("<span class='glyphicon glyphicon-remove text-danger aria-hidden='true'></span>");
-                            } 
+                            } else if ($linha['status_reserva'] == 'Em análise') {
+                                echo ("<span class='glyphicon glyphicon-time text-warning aria-hidden='true'></span>");
+                            } else{
+                                echo ("<span class='glyphicon glyphicon-ok text-success aria-hidden='true'></span>");
+                            }
                             ?>
                             <?php echo $linha['status_reserva']; ?>                           
                         </td> 
@@ -73,9 +102,22 @@ include('../acesso_com.php');
                         
 
                         <td>
+                            <a href="analisar_reserva.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-info largButton btn-xs">
+                                <span class="hidden-xs">Analisar</span>
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </a>
+                            
                             <a href="ativa_reserva.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-success largButton btn-xs">
                                 <span class="hidden-xs">Reativar</span>
                                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                            </a>
+                            <a href="cancela_reserva.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-danger largButton btn-xs">
+                                <span class="hidden-xs">Cancelar</span>
+                                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                            </a>
+                            <a href="reserva_conf_envia.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-info largButton btn-xs">
+                                <span class="hidden-xs">Enviar</span>
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                             </a>
                         </td>
                     </tr> <!-- Final da linha da tabela -->

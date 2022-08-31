@@ -50,15 +50,7 @@ $totalLinhas = $lista->num_rows;
     <?php include('menu_cliente.php'); ?>
 
     <main class="container">
-        <h1 class="breadcrump alert-danger glyphicon glyphicon-list-alt">Minhas Reservas
-        <?php
-                    if (isset($_SESSION['msgres'])) {
-                        echo $_SESSION['msgres'];
-                        //Após imprimir destroi a variavel para não imprimir novamente
-                        unset($_SESSION['msgres']);
-                    }
-                    ?>
-        </h1>
+        <h1 class="breadcrump alert-danger glyphicon glyphicon-list-alt">Minhas Reservas</h1>
         <table class="table table-condensed table-hover tbopacidade" style="background-color: #e4b9b9;">
             <!-- Verifica se existe reservas em analise -->
         <?php if($linha == 0){

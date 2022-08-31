@@ -20,11 +20,11 @@ if ($_POST) {
     //Consulta(query) Sql para inserção dos dados
     $query = "update tbreserva
                             set 
-                            numero_mesa_reserva = " . $numero_mesa_reserva . ",
-                            valor_reserva = "  . $valor_reserva . ",
-                            status_reserva = '" . $status_reserva . "',
-                            parecer_reserva = '" . $parecer_reserva . "'
-                            where id_reserva = " . $id_filtro . ";";
+                            numero_mesa_reserva = '$numero_mesa_reserva',
+                            valor_reserva = '$valor_reserva',
+                            status_reserva = '$status_reserva',
+                            parecer_reserva = '$parecer_reserva'
+                            where id_reserva = '$id_filtro'";
 
     $resultado = $conexao->query($query);
 

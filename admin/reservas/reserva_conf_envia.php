@@ -23,8 +23,8 @@ $id_reserva = $_GET['id_reserva'];
     <!--Após 15 segundo a página será redirecionada para index.php-->
     <meta http-equiv="refresh" content="3;URL=reserva_confirmada_lista.php">
     <title>Confirmação de Reserva</title>
-    <link rel="stylesheet" href="./css/meu_estilo.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../../css/meu_estilo.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css">
 </head>
 
 <body class="fundofixo">
@@ -32,7 +32,7 @@ $id_reserva = $_GET['id_reserva'];
 
     use PHPMailer\PHPMailer\PHPMailer;
 
-    include('reserva_confirmada_lista.php'); ?>
+     ?>
     <main class="container">
         <section>
             <div class="jumbotron alert-success text-center">
@@ -89,19 +89,33 @@ $id_reserva = $_GET['id_reserva'];
                 $email->addAddress($email_cliente); // destinatário
                 $email->Subject = "Churrascow? Fale Conosco";
                 
-                //Verifica se há anexos
+
+
+
 
 
                 $body_email = "Você recebeu uma menssagem de: 'Churrascow' ('churraschurrascow.com.br'):
                 <br><br> Sua reserva para $num_pessoas na data $data horário $hora, foi $status com sucesso!<br> 
                 Você como titular da reserva recebeu um desconto de R$ 70,00. <br>  
                 Portanto pagará apenas $valor no valor do seu rodízio! <br> Anexos: <br> ";
+                
+                //Criando QRcode
+                $aux = 'qrcode/qr_img.php?';
+                $aux .= 'd = $body_email&';
+                $aux .= 'e = H&';
+                $aux.= 's = 10&';
+                $aux  = 't = J';
 
-                $email->Body = $body_email;
+
+
+                $email->Body = $body_email;                                
+                
+
 
                 //Verifica envio do e-mail
                 if ($email->send()) {
                     echo "<h2>Sua menssagem foi enviada com sucesso!</h2>";
+                    echo $aux;
                 } else {
                     echo "<h2>Falha ao enviar a menssagem</h2>" . $email->ErrorInfo;
                 }
