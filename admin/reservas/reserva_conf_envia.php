@@ -1,4 +1,4 @@
-<?php 
+<?php
 //Incluindo variáveis de ambiente, acesso e banco
 include('../../config.php');
 include('../acesso_com.php'); //Importante!!!!!!!!!!!! Autentica o usuário
@@ -32,7 +32,7 @@ $id_reserva = $_GET['id_reserva'];
 
     use PHPMailer\PHPMailer\PHPMailer;
 
-     ?>
+    ?>
     <main class="container">
         <section>
             <div class="jumbotron alert-success text-center">
@@ -42,13 +42,14 @@ $id_reserva = $_GET['id_reserva'];
                 include('../../PHPMailer/PHPMailer.php');
                 include('../../PHPMailer/SMTP.php');
 
-                
+
                 $consulta = "select r.id_cliente_reserva,
                 r.data_reserva,
                 r.hora_reserva,
                 r.numero_pessoas_reserva,
                 r.valor_reserva,
                 r.status_reserva,
+                r.parecer_reserva,
                 C.email_cliente,
                 c.nome_cliente
                 from tbreserva r
@@ -65,6 +66,7 @@ $id_reserva = $_GET['id_reserva'];
                 $hora = $linha['hora_reserva'];
                 $status = $linha['status_reserva'];
                 $num_pessoas = $linha['numero_pessoas_reserva'];
+                $parecer_reserva = $linha['parecer_reserva'];
 
 
 
@@ -87,41 +89,34 @@ $id_reserva = $_GET['id_reserva'];
                 //Configuração da msg                
                 $email->setFrom($email->Username, "Churrasqueiro & Churrascow"); // remetente
                 $email->addAddress($email_cliente); // destinatário
-                $email->Subject = "Churrascow? Fale Conosco";
-                
+                $email->Subject = "Churrascow? Fale Conosco";                
 
 
 
-
-
-                $body_email = "Você recebeu uma menssagem de: 'Churrascow' ('churraschurrascow.com.br'):
-                <br><br> Sua reserva para $num_pessoas na data $data horário $hora, foi $status com sucesso!<br> 
-                Você como titular da reserva recebeu um desconto de R$ 70,00. <br>  
-                Portanto pagará apenas $valor no valor do seu rodízio! <br> Anexos: <br> ";
-                
                 //Criando QRcode
-                $aux = 'qrcode/qr_img.php?';
-                $aux .= 'd = $body_email&';
-                $aux .= 'e = H&';
-                $aux.= 's = 10&';
-                $aux  = 't = J';
+                //$aux  = 'qr_img0.50j/php/qr_img.php?d=churraschurrascow.com.br&e=H&s=4&t=p';
 
 
 
-                $email->Body = $body_email;                                
-                
+                $body_email = " <section> Você recebeu uma menssagem de: Churrascow ('churraschurrascow.com.br'):
+                <br><br> O status da sua reserva para $num_pessoas na data $data horário $hora, foi alterado para $status!<br> 
+                $$parecer_reserva <br>  
+                Portanto pagará apenas $valor no valor do seu rodízio! <br> <img src='https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=<?php echo $id_reserva?>' alt=''>";
+
+
+
+                $email->Body =  $body_email;
+
 
 
                 //Verifica envio do e-mail
                 if ($email->send()) {
-                    echo "<h2>Sua menssagem foi enviada com sucesso!</h2>";
-                    echo $aux;
+                    echo "<h2>Sua menssagem foi enviada com sucesso!</h2>";                    
                 } else {
                     echo "<h2>Falha ao enviar a menssagem</h2>" . $email->ErrorInfo;
                 }
-
-
                 ?>
+                <img src="<?php echo $aux?>" alt="">
             </div>
         </section>
     </main>

@@ -37,7 +37,7 @@
                 <form action="reservas/reservas_busca.php" method="get" name="form_busca" id="form_busca" class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Busca reserva" name="buscar_reserva" id="buscar_reserva" size="9" required>
+                                <input type="text" class="form-control" placeholder="Busca por CPF, Ststus e Data" name="buscar_reserva" id="buscar_reserva" size="25" required>
                                 <span class="input-group-btn">
                                     <button type="submit" class="btn btn-default">
                                         <span class="glyphicon glyphicon-search"></span>

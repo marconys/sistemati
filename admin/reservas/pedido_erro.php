@@ -9,7 +9,7 @@ include('../../config.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Após 15 segundo a página será redirecionada para index.php-->
-    <meta http-equiv="refresh" content="3;URL=../../client/minha_reserva.php">
+    <meta http-equiv="refresh" content="3;URL=../../client/nova_reserva.php">
     <title>
         <?php echo SYS_NAME; ?> - Erro </title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css">

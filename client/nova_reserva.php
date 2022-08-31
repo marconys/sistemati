@@ -6,10 +6,6 @@ include('../conexoes/conexao.php');
 
 $id_cliente = $_SESSION['id_cliente'];
 
-
-
-
-
 if ($_POST) {
     //Reber os dados do formulário
     //organizar os campos na mesma ordem
