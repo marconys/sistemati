@@ -8,7 +8,7 @@ include('../acesso_com.php');
 //Incluindo o Arquivo de conexão
 include('../../conexoes/conexao.php');
 
-//Selecionando os dados e ordenando por ordem alfabetica
+//Selecionando os dados e ordenando conforme status solictado
 $consulta = "select r.id_reserva,
 r.data_reserva,
 r.hora_reserva,

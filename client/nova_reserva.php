@@ -15,23 +15,43 @@ if ($_POST) {
     $motivo_reserva = $_POST['motivo_reserva'];
     $id_cliente_reserva = $id_cliente;
 
-        $campos_insert = "id_cliente_reserva, data_reserva,hora_reserva,numero_pessoas_reserva,motivo_reserva,";
-        $values = "$id_cliente_reserva,'$data_reserva','$hora_reserva',$numero_pessoas,'$motivo_reserva'";
+    //Calcula a diferença de dias entre a data atual e a data da reserva
+    $hoje = new DateTime('now');
+    $data_reserva = new DateTime($_POST['data_reserva']);
+    $interval = $data_reserva->diff($hoje);
+    $dias = $interval->d;
+    $horas = $interval->h;
+    
+    
+
+    //Verifica se o prazo da reserva atende o mínimo de 12 Horas e máximo de  60 dias
+    if ($dias > 60  && $horas < 12 ) {      
+
+        header("location: ../../reserva/pedido-erro.php");
+
+
+    }else{
+        
+
+            $campos_insert = "id_cliente_reserva, data_reserva,hora_reserva,numero_pessoas_reserva,motivo_reserva,";
+            $values = "$id_cliente_reserva,'$data_reserva','$hora_reserva',$numero_pessoas,'$motivo_reserva'";
 
 
 
 
-        $query = "insert into tbreserva ($campos_insert) values ($values);";
-        $resultado = $conexao->query($query);
+            $query = "insert into tbreserva ($campos_insert) values ($values);";
+            $resultado = $conexao->query($query);
 
-        // var_dump($$query);
+            // var_dump($$query);
 
-        //Após o insert direciona a pagina
-        if (mysqli_insert_id($conexao)) {
-            header("location: ../admin/reservas/pedido_sucesso.php");
-        }else{
-            header("location: ../admin/reservas/pedido_erro.php");
+            //Após o insert direciona a pagina
+            if (mysqli_insert_id($conexao)) {
+                header("location: minha_reserva.php");
+            }else{
+                header("location: nova_reserva.php");
+            }
         }
+
 }
 
 
@@ -39,7 +59,7 @@ if ($_POST) {
 //Chave estrangeira tipo
 
 
-$query_cliente = "select * from tbcliente where email_cliente ";
+$query_cliente = "select * from tbcliente order by email_cliente";
 $lista_fk = $conexao->query($query_cliente);
 $linha_fk = $lista_fk->fetch_assoc();
 ?>

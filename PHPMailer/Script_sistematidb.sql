@@ -91,7 +91,7 @@ hora_reserva time not null,
 numero_mesa_reserva int (11) null,
 numero_pessoas_reserva int (11) not null,
 motivo_reserva varchar(100) null,
-valor_reserva decimal(10,2) null,
+valor_reserva decimal(10,2) null default 99.90,
 status_reserva varchar(20) null default 'Em análise',
 parecer_reserva varchar(100) null
 

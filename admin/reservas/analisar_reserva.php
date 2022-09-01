@@ -136,11 +136,6 @@ $totalLinha_fk = $lista_fk->num_rows;
                                 </textarea>
                             </div>
                             <br>
-                            <!-- Enviar e-mail para o cliente de confirmação ou cancelamento-->
-                            <a href="reserva_conf_envia.php?id_reserva=<?php echo $linha['id_reserva']; ?>" class="btn btn-info btn-block btn-xs">
-                                <span class="hidden-xs">Enviar</span>
-                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                            </a>
                             <!-- Botão Enviar -->
                             <input type="submit" value="Finalizar" name="enviar" id="enviar" class="btn btn-warning btn-block">
                         </form>

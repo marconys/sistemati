@@ -94,16 +94,19 @@ $id_reserva = $_GET['id_reserva'];
 
 
                 //Criando QRcode
-                //$aux  = 'qr_img0.50j/php/qr_img.php?d=churraschurrascow.com.br&e=H&s=4&t=p';
+                $aux  = 'qr_img0.50j/php/qr_img.php?';
+                $aux .= 'd=<?php echo $id_reserva?>$';
+                $aux .= 'e=H&';
+                $aux .= 's=4&';
+                $aux .= 't=p';          
+                   
+
+                $email->addStringAttachment($aux, 'QR code.png');
 
 
-
-                $body_email = " <section> Você recebeu uma menssagem de: Churrascow ('churraschurrascow.com.br'):
+                $body_email = "Você recebeu uma menssagem de: Churrascow ('churraschurrascow.com.br'):
                 <br><br> O status da sua reserva para $num_pessoas na data $data horário $hora, foi alterado para $status!<br> 
-                $$parecer_reserva <br>  
-                Portanto pagará apenas $valor no valor do seu rodízio! <br> <img src='https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=<?php echo $id_reserva?>' alt=''>";
-
-
+                $parecer_reserva <br> <img src='https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=<?php echo $id_reserva?>' alt=''>";
 
                 $email->Body =  $body_email;
 
@@ -116,7 +119,6 @@ $id_reserva = $_GET['id_reserva'];
                     echo "<h2>Falha ao enviar a menssagem</h2>" . $email->ErrorInfo;
                 }
                 ?>
-                <img src="<?php echo $aux?>" alt="">
             </div>
         </section>
     </main>
