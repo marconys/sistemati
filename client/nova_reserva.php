@@ -17,8 +17,8 @@ if ($_POST) {
 
     //Calcula a diferença de dias entre a data atual e a data da reserva
     $hoje = new DateTime('now');
-    $data_reserva = new DateTime($_POST['data_reserva']);
-    $interval = $data_reserva->diff($hoje);
+    $data_ecolhida = new DateTime($_POST['data_reserva']);
+    $interval = $data_ecolhida->diff($hoje);
     $dias = $interval->d;
     $horas = $interval->h;
     
@@ -33,7 +33,7 @@ if ($_POST) {
     }else{
         
 
-            $campos_insert = "id_cliente_reserva, data_reserva,hora_reserva,numero_pessoas_reserva,motivo_reserva,";
+            $campos_insert = "id_cliente_reserva, data_reserva,hora_reserva,numero_pessoas_reserva,motivo_reserva";
             $values = "$id_cliente_reserva,'$data_reserva','$hora_reserva',$numero_pessoas,'$motivo_reserva'";
 
 
@@ -59,7 +59,7 @@ if ($_POST) {
 //Chave estrangeira tipo
 
 
-$query_cliente = "select * from tbcliente order by email_cliente";
+$query_cliente = "select * from tbcliente where email_cliente ";
 $lista_fk = $conexao->query($query_cliente);
 $linha_fk = $lista_fk->fetch_assoc();
 ?>

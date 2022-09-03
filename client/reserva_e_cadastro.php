@@ -15,8 +15,8 @@ $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 if (isset($dados['data_reserva'])) {
     //Calcula a diferença de dias entre a data atual e a data da reserva
     $hoje = new DateTime('now');
-    $data_reserva = new DateTime($dados['data_reserva']);
-    $interval = $data_reserva->diff($hoje);
+    $data_ecolhida = new DateTime($dados['data_reserva']);
+    $interval = $data_ecolhida->diff($hoje);
     $dias = $interval->d;
     $horas = $interval->h;
     }
@@ -85,7 +85,7 @@ if ($dias > 60  && $horas < 12 ) {
             header("location: ../cadastro_e_reserva.php");    
         }
 
-        } catch(Exception){
+        }catch(Exception){
             //Redireciona a págia
             header('location: ../cadastro_e_reserva.php');
             //Criar variavel global para  salvar  a mensagem de erro
