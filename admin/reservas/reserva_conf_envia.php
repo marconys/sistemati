@@ -83,8 +83,8 @@ $id_reserva = $_GET['id_reserva'];
                 $email->Port = "587";
                 $email->SMTPSecure = "tls";
                 $email->SMTPAuth = "true";
-                $email->Username = "marconyspinheiro@yahoo.com.br";
-                $email->Password = "ecfidptogxyfsyaq";
+                $email->Username = "contato@churrascow.com.br";
+                $email->Password = "";
 
                 //Configuração da msg                
                 $email->setFrom($email->Username, "Churrasqueiro & Churrascow"); // remetente
